@@ -1,4 +1,4 @@
-package com.euler.Euler.common;
+package com.spring.Euler.common;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -43,5 +43,9 @@ public class ApiError extends RuntimeException {
         this.status = status;
         this.message = message;
         this.debugMessage = ex.getLocalizedMessage();
+    }
+
+    public static ApiError notFound(String message) {
+        return new ApiError(HttpStatus.NOT_FOUND, message);
     }
 }

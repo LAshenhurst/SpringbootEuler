@@ -1,6 +1,6 @@
-package com.euler.Euler.service;
+package com.spring.Euler.service;
 
-import com.euler.Euler.domain.Answer;
+import com.spring.Euler.domain.Answer;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 

@@ -1,7 +1,9 @@
-package com.euler.Euler.controller;
+package com.spring.Euler.controller;
 
-import com.euler.Euler.domain.Answer;
-import com.euler.Euler.service.AnswersService;
+import com.spring.Euler.domain.Answer;
+import com.spring.Euler.domain.mappers.AnswerMapper;
+import com.spring.Euler.helper.MathsHelper;
+import com.spring.Euler.service.AnswersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +17,7 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class AnswersController {
     private final AnswersService answersService;
+    private final AnswerMapper answerMapper;
 
 
     @GetMapping("/{index}")
@@ -27,7 +30,13 @@ public class AnswersController {
         return answersService.getSolution(null);
     }
 
-    @GetMapping
+    @GetMapping("/test")
+    public Mono<Answer> runTestMethod() {
+        return Mono.just(MathsHelper.isPrime(91))
+                .map(answer -> answerMapper.generate("Result of Test Method", answer, null));
+    }
+
+    @GetMapping("/all")
     public Flux<Answer> getAllAnswers() {
         return answersService.getSolutions();
     }

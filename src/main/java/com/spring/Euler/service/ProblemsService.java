@@ -1,4 +1,4 @@
-package com.euler.Euler.service;
+package com.spring.Euler.service;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

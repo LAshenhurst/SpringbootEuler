@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "50c8e2b3-d0f7-4608-b0be-7a54ec10ee3f",
+		"name": "Answers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAnswer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/answers/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"answers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAnswers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/answers/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"answers",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getRandomAnswer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/answers/random",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"answers",
+						"random"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

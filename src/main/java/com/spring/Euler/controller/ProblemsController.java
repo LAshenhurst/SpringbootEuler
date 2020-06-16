@@ -1,13 +1,12 @@
-package com.euler.Euler.controller;
+package com.spring.Euler.controller;
 
-import com.euler.Euler.service.ProblemsService;
+import com.spring.Euler.service.ProblemsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +19,7 @@ public class ProblemsController {
         return problemsService.readProblem(index);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public Flux<String> getProblems() {
         return problemsService.readProblems();
     }

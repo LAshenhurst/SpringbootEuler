@@ -1,4 +1,4 @@
-package com.euler.Euler.domain;
+package com.spring.Euler.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,4 +17,7 @@ public class Answer {
 
     @NotNull
     private String answer;
+
+    @NotNull
+    private String eulerURL;
 }
