@@ -1,14 +1,11 @@
 package com.euler.Euler.common;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.http.HttpStatus;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -8,11 +8,10 @@ import org.mapstruct.Mapper;
 @Mapper(componentModel = "spring")
 public abstract class AnswerMapper {
     public Answer generate(String problem, Object answer) {
-        return null;
-        //return Answer.builder()
-        //        .problem(problem)
-        //        .answer(answer.toString())
-        //        .build();
+        return Answer.builder()
+                .problem(problem)
+                .answer(answer.toString())
+                .build();
     }
 
 }

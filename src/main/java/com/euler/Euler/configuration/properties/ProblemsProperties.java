@@ -6,18 +6,18 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.validation.constraints.NotEmpty;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Configuration
-@ConfigurationProperties(prefix = "problems")
+@ConfigurationProperties(prefix = "static")
 public class ProblemsProperties {
 
     @NotEmpty
-    private List<String> problems = Collections.emptyList();
+    private List<String> problems = new ArrayList<>();
 
     public String getProblem(int index) {
-        return problems.get(index + 1);
+        return problems.get(index - 1);
     }
 }
