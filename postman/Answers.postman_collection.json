@@ -26,7 +26,7 @@
 			"response": []
 		},
 		{
-			"name": "getAnswers",
+			"name": "getAllAnswers",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -60,6 +60,31 @@
 						"v1",
 						"answers",
 						"random"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMultipleAnswers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/answers?range=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"answers"
+					],
+					"query": [
+						{
+							"key": "range",
+							"value": "3"
+						}
 					]
 				}
 			},

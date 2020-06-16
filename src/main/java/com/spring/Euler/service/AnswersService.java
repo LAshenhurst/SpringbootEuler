@@ -5,6 +5,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface AnswersService {
-    Mono<Answer> getSolution(Integer index);
-    Flux<Answer> getSolutions();
+    Mono<Answer> getAnswer(Integer index);
+    Flux<Answer> getAnswers(Integer range);
 }

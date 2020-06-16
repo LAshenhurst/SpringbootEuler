@@ -5,10 +5,7 @@ import com.spring.Euler.domain.mappers.AnswerMapper;
 import com.spring.Euler.helper.MathsHelper;
 import com.spring.Euler.service.AnswersService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -22,22 +19,27 @@ public class AnswersController {
 
     @GetMapping("/{index}")
     public Mono<Answer> getFirstAnswer(@PathVariable Integer index) {
-        return answersService.getSolution(index);
+        return answersService.getAnswer(index);
     }
 
     @GetMapping("/random")
     public Mono<Answer> getRandomAnswer() {
-        return answersService.getSolution(null);
+        return answersService.getAnswer(null);
     }
 
     @GetMapping("/test")
     public Mono<Answer> runTestMethod() {
         return Mono.just(MathsHelper.isPrime(91))
-                .map(answer -> answerMapper.generate("Result of Test Method", answer, null));
+                .map(answer -> answerMapper.generate("Result of Test Method", answer.toString(), null));
+    }
+
+    @GetMapping
+    public Flux<Answer> getMultipleAnswers(@RequestParam(required = false) Integer range) {
+        return answersService.getAnswers(range);
     }
 
     @GetMapping("/all")
     public Flux<Answer> getAllAnswers() {
-        return answersService.getSolutions();
+        return answersService.getAnswers(null);
     }
 }

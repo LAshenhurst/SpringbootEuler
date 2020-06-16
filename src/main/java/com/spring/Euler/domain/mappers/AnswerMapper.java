@@ -7,10 +7,10 @@ import org.mapstruct.Mapper;
 @Slf4j
 @Mapper(componentModel = "spring")
 public abstract class AnswerMapper {
-    public Answer generate(String problem, Object answer, Integer val) {
+    public Answer generate(String problem, String answer, Integer val) {
         return Answer.builder()
                 .problem(problem)
-                .answer(answer.toString())
+                .answer(answer)
                 .eulerURL("https://projecteuler.net/problem=" + val)
                 .build();
     }

@@ -23,22 +23,28 @@ public class AnswersServiceImpl implements AnswersService {
     private final AnswerMapper answerMapper;
     private final ProblemsProperties problemsProperties;
 
-    public Mono<Answer> getSolution(Integer index) {
+    public Mono<Answer> getAnswer(Integer index) {
         return Mono.justOrEmpty(index)
                 .switchIfEmpty(Mono.just(ThreadLocalRandom.current().nextInt(1, problemsProperties.getProblems().size() + 1)))
                 .map(val -> {
                     if (val <= problemsProperties.getProblems().size()) {
-                        return answerMapper.generate(problemsProperties.getProblem(val), runSolutionMethod(val), val);
+                        return answerMapper.generate(problemsProperties.getProblem(val), getSolution(val), val);
                     } else { throw new ApiError(HttpStatus.NOT_FOUND, "Problem not listed."); }
                 });
     }
 
-    public Flux<Answer> getSolutions() {
-        return Flux.fromStream(IntStream.rangeClosed(1, problemsProperties.getProblems().size()).boxed())
-                .flatMap(this::getSolution);
+    public Flux<Answer> getAnswers(Integer range) {
+        return Mono.justOrEmpty(range)
+                .switchIfEmpty(Mono.just(problemsProperties.getProblems().size()))
+                .flatMapMany(finalRange -> {
+                    if (finalRange <= problemsProperties.getProblems().size()) {
+                        return Flux.fromStream(IntStream.rangeClosed(1, finalRange).boxed());
+                    } else { throw new ApiError(HttpStatus.BAD_REQUEST, "range value too high."); }
+                })
+                .flatMap(this::getAnswer);
     }
 
-    private Object runSolutionMethod(Integer index) {
+    private String getSolution(Integer index) {
         Object answer;
         switch (index) {
             case 1 -> answer = FirstTenSolutions.One();
@@ -46,8 +52,8 @@ public class AnswersServiceImpl implements AnswersService {
             case 3 -> answer = FirstTenSolutions.Three();
             case 4 -> answer = FirstTenSolutions.Four();
             case 5 -> answer = FirstTenSolutions.Five();
-            default -> answer = null;
+            default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found.");
         }
-        return answer;
+        return answer.toString();
     }
 }
