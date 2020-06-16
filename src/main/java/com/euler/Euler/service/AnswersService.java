@@ -1,4 +1,8 @@
-package com.euler.Euler.service.impl;
+package com.euler.Euler.service;
 
-public class AnswersService {
+import com.euler.Euler.domain.Response;
+import reactor.core.publisher.Mono;
+
+public interface AnswersService {
+    Mono<Response> problemOne();
 }
