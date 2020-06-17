@@ -18,7 +18,7 @@ public class AnswersController {
 
 
     @GetMapping("/{index}")
-    public Mono<Answer> getFirstAnswer(@PathVariable Integer index) {
+    public Mono<Answer> getAnswer(@PathVariable Integer index) {
         return answersService.getAnswer(index);
     }
 

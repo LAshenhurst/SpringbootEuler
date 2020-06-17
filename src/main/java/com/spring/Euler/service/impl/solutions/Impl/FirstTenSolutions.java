@@ -1,10 +1,11 @@
 package com.spring.Euler.service.impl.solutions.Impl;
 
 import com.spring.Euler.helper.BigIntegerHelper;
+import com.spring.Euler.helper.FilesHelper;
 import com.spring.Euler.helper.MathsHelper;
 
+import java.io.File;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
@@ -60,5 +61,19 @@ public interface FirstTenSolutions {
         int prime = 2;
         for(int count = 1; count < 10001; count++) { prime = MathsHelper.findNextPrime(prime); }
         return prime;
+    }
+
+    default Long Eight() {
+        File file = FilesHelper.getResourceFile("static/problem8.txt");
+        String number = String.join("", FilesHelper.readAllLines(file));
+        Long result = 0L;
+        for (int count = 13; count < number.length(); count++) {
+            Long product = List.of(number.substring(count - 13, count).split(""))
+                    .stream()
+                    .map(Long::parseLong)
+                    .reduce(1L, (a, b) -> a * b);
+            if (product > result) { result = product; }
+        }
+        return result;
     }
 }

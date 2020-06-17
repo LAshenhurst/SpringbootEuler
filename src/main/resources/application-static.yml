@@ -7,3 +7,4 @@ static:
     - "5. Find the smallest positive number that is evenly divisible by all of the numbers from 1 to 20"
     - "6. Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum"
     - "7. Find the 10 001st prime number"
+    - "8. Find the thirteen adjacent digits in the 1000-digit number that have the greatest product"
