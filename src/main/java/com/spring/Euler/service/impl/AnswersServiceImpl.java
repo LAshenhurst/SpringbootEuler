@@ -5,7 +5,8 @@ import com.spring.Euler.configuration.properties.ProblemsProperties;
 import com.spring.Euler.domain.Answer;
 import com.spring.Euler.domain.mappers.AnswerMapper;
 import com.spring.Euler.service.AnswersService;
-import com.spring.Euler.service.impl.solutions.FirstTenSolutions;
+import com.spring.Euler.service.impl.solutions.Impl.FirstTenSolutions;
+import com.spring.Euler.service.impl.solutions.Solutions;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ import java.util.stream.IntStream;
 @Service
 @RequiredArgsConstructor
 public class AnswersServiceImpl implements AnswersService {
+    private final Solutions solutions;
     private final AnswerMapper answerMapper;
     private final ProblemsProperties problemsProperties;
 
@@ -47,11 +49,13 @@ public class AnswersServiceImpl implements AnswersService {
     private String getSolution(Integer index) {
         Object answer;
         switch (index) {
-            case 1 -> answer = FirstTenSolutions.One();
-            case 2 -> answer = FirstTenSolutions.Two();
-            case 3 -> answer = FirstTenSolutions.Three();
-            case 4 -> answer = FirstTenSolutions.Four();
-            case 5 -> answer = FirstTenSolutions.Five();
+            case 1 -> answer = solutions.One();
+            case 2 -> answer = solutions.Two();
+            case 3 -> answer = solutions.Three();
+            case 4 -> answer = solutions.Four();
+            case 5 -> answer = solutions.Five();
+            case 6 -> answer = solutions.Six();
+            case 7 -> answer = solutions.Seven();
             default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found.");
         }
         return answer.toString();

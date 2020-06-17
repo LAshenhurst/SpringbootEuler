@@ -44,8 +44,4 @@ public class ApiError extends RuntimeException {
         this.message = message;
         this.debugMessage = ex.getLocalizedMessage();
     }
-
-    public static ApiError notFound(String message) {
-        return new ApiError(HttpStatus.NOT_FOUND, message);
-    }
 }

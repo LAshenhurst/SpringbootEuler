@@ -2,15 +2,13 @@ package com.spring.Euler.helper;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.math.BigInteger;
-
 @Slf4j
 public class MathsHelper {
 
     public static boolean isPrime(long n) {
-        if (n <= 3) { return false; }
-        for (int i = 5; i*i < n; i += 2) {
-            if (n % (long) i == 0) { return false; }
+        if (n <= 2) { return false; }
+        for (long i = 2; i * i <= n; i++) {
+            if (n % i == 0) { return false; }
         }
         return true;
     }

@@ -1,15 +1,17 @@
-package com.spring.Euler.service.impl.solutions;
+package com.spring.Euler.service.impl.solutions.Impl;
 
 import com.spring.Euler.helper.BigIntegerHelper;
 import com.spring.Euler.helper.MathsHelper;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.IntStream;
 
-public class FirstTenSolutions {
-    public static Integer One() { return IntStream.rangeClosed(0, 999).filter(x -> x % 3 == 0 || x % 5 == 0).sum(); }
+public interface FirstTenSolutions {
+    default Integer One() { return IntStream.rangeClosed(0, 999).filter(x -> x % 3 == 0 || x % 5 == 0).sum(); }
 
-    public static Integer Two() {
+    default Integer Two() {
         int firstFib = 1;
         int secondFib = 2;
         int storage;
@@ -23,7 +25,7 @@ public class FirstTenSolutions {
         return result;
     }
 
-    public static long Three() {
+    default long Three() {
         long result = 600851475143L;
         int prime = 2;
         while (!MathsHelper.isPrime(result)) {
@@ -32,7 +34,7 @@ public class FirstTenSolutions {
         return result;
     }
 
-    public static Integer Four() {
+    default Integer Four() {
         int result = -1;
         for (int i = 100; i < 1000; i++) {
             for (int j = 100; j < 1000; j++) {
@@ -42,9 +44,21 @@ public class FirstTenSolutions {
         return result;
     }
 
-    public static BigInteger Five() {
+    default BigInteger Five() {
         BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= 20; i++) { result = BigIntegerHelper.lowestCommonMultiple(BigInteger.valueOf(i), result); }
         return result;
+    }
+
+    default long Six() {
+        long sumOfSquares = IntStream.rangeClosed(1, 100).map(x -> x * x).sum();
+        long squareOfSums = (long) Math.pow(IntStream.rangeClosed(1, 100).sum(), 2);
+        return Math.abs(squareOfSums - sumOfSquares);
+    }
+
+    default Integer Seven() {
+        int prime = 2;
+        for(int count = 1; count < 10001; count++) { prime = MathsHelper.findNextPrime(prime); }
+        return prime;
     }
 }
