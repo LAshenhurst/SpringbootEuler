@@ -29,7 +29,7 @@ public class AnswersController {
 
     @GetMapping("/test")
     public Mono<Answer> runTestMethod() {
-        return Mono.just(MathsHelper.isPrime(91))
+        return Mono.just(MathsHelper.sieveOfEratosthenes(100))
                 .map(answer -> answerMapper.generate("Result of Test Method", answer.toString(), null));
     }
 

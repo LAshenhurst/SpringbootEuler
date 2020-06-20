@@ -89,6 +89,26 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "runTestFunction",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/answers/test",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"answers",
+						"test"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}

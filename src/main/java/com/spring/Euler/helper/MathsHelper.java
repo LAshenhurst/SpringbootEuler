@@ -2,6 +2,12 @@ package com.spring.Euler.helper;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Slf4j
 public class MathsHelper {
 
@@ -31,5 +37,17 @@ public class MathsHelper {
     public static Integer greatestCommonDivisor(Integer x, Integer y) {
         if (x.equals(y)) { return x; }
         else { return x > y ? greatestCommonDivisor(x - y, y) : greatestCommonDivisor(x, y - x); }
+    }
+
+    public static List<Integer> sieveOfEratosthenes(final int target) {
+        final boolean[] nonPrime = new boolean[target + 1];
+        for (int i = 2; i <= Math.sqrt(target); i++) {
+            if (!nonPrime[i]) {
+                for (int j = i * 2; j <= target; j += i) { nonPrime[j] = true; }
+            }
+        }
+        final List<Integer> primes = new ArrayList<>();
+        for (int i = 2; i <= target; i++) { if (!nonPrime[i]) primes.add(i); }
+        return primes;
     }
 }

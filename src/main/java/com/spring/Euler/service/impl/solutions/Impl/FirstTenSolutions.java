@@ -26,7 +26,7 @@ public interface FirstTenSolutions {
         return result;
     }
 
-    default long Three() {
+    default Long Three() {
         long result = 600851475143L;
         int prime = 2;
         while (!MathsHelper.isPrime(result)) {
@@ -51,7 +51,7 @@ public interface FirstTenSolutions {
         return result;
     }
 
-    default long Six() {
+    default Long Six() {
         long sumOfSquares = IntStream.rangeClosed(1, 100).map(x -> x * x).sum();
         long squareOfSums = (long) Math.pow(IntStream.rangeClosed(1, 100).sum(), 2);
         return Math.abs(squareOfSums - sumOfSquares);
@@ -59,7 +59,7 @@ public interface FirstTenSolutions {
 
     default Integer Seven() {
         int prime = 2;
-        for(int count = 1; count < 10001; count++) { prime = MathsHelper.findNextPrime(prime); }
+        for (int count = 1; count < 10001; count++) { prime = MathsHelper.findNextPrime(prime); }
         return prime;
     }
 
@@ -75,5 +75,28 @@ public interface FirstTenSolutions {
             if (product > result) { result = product; }
         }
         return result;
+    }
+
+    default Integer Nine() {
+        int result = -1;
+        for (int c = 1000; c > 0; c--) {
+            for (int b = 0; b < c; b++) {
+                for (int a = 0; a < b; a++) {
+                    int sum = a + b + c;
+                    if (sum == 1000 && Math.pow(a, 2) + Math.pow(b, 2) == Math.pow(c, 2)) {
+                        result = a * b * c;
+                        break;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    default Long Ten() {
+        return MathsHelper.sieveOfEratosthenes(2000000)
+                .stream()
+                .map(Long::valueOf)
+                .reduce(0L, Long::sum);
     }
 }

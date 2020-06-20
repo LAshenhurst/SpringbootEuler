@@ -26,11 +26,11 @@ public class AnswersServiceImpl implements AnswersService {
 
     public Mono<Answer> getAnswer(Integer index) {
         return Mono.justOrEmpty(index)
-                .switchIfEmpty(Mono.just(ThreadLocalRandom.current().nextInt(1, problemsProperties.getProblems().size() + 1)))
+                .switchIfEmpty(Mono.just(ThreadLocalRandom.current().nextInt(1, problemsProperties.getProblems().size() - 1)))
                 .map(val -> {
                     if (val <= problemsProperties.getProblems().size()) {
                         return answerMapper.generate(problemsProperties.getProblem(val), getSolution(val), val);
-                    } else { throw new ApiError(HttpStatus.NOT_FOUND, "Problem not listed"); }
+                    } else { throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found"); }
                 });
     }
 
@@ -56,6 +56,8 @@ public class AnswersServiceImpl implements AnswersService {
             case 6 -> answer = solutions.Six();
             case 7 -> answer = solutions.Seven();
             case 8 -> answer = solutions.Eight();
+            case 9 -> answer = solutions.Nine();
+            case 10 -> answer = solutions.Ten();
             default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found");
         }
         return answer.toString();

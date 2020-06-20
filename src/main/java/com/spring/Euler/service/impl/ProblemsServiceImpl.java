@@ -18,7 +18,7 @@ public class ProblemsServiceImpl implements ProblemsService {
 
     public Mono<String> readProblem(int index) {
         if (index > problemsProperties.getProblems().size()) {
-           throw new ApiError(HttpStatus.NOT_FOUND, "Problem not listed.");
+           throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found.");
         }
 
         return Mono.just(problemsProperties.getProblem(index));
