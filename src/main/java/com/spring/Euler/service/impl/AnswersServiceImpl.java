@@ -58,6 +58,13 @@ public class AnswersServiceImpl implements AnswersService {
             case 8 -> answer = solutions.Eight();
             case 9 -> answer = solutions.Nine();
             case 10 -> answer = solutions.Ten();
+            case 11 -> answer = solutions.Eleven();
+            case 12 -> answer = solutions.Twelve();
+            case 13 -> answer = solutions.Thirteen();
+            case 14 -> answer = solutions.Fourteen();
+            case 15 -> answer = solutions.Fifteen();
+            case 16 -> answer = solutions.Sixteen();
+            case 17 -> answer = solutions.Seventeen();
             default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found");
         }
         return answer.toString();
