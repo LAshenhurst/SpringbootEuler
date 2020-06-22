@@ -75,7 +75,7 @@ public class MathsHelper {
         return n == Math.floor(n) && !Double.isInfinite(n);
     }
 
-    public static long binomial(int n, int k)
+    public static Long binomial(int n, int k)
     {
         if (k > n - k) { k = n - k; }
 

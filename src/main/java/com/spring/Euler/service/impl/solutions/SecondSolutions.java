@@ -1,16 +1,18 @@
-package com.spring.Euler.service.impl.solutions.Impl;
+package com.spring.Euler.service.impl.solutions;
 
+import com.spring.Euler.common.ApiError;
+import com.spring.Euler.helper.BigIntegerHelper;
 import com.spring.Euler.helper.FilesHelper;
 import com.spring.Euler.helper.MathsHelper;
+import org.springframework.http.HttpStatus;
 
 import java.io.File;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public interface SecondSolutionsImpl {
-    default Integer Eleven() {
+public class SecondSolutions {
+    private static Integer Eleven() {
         File file = FilesHelper.getResourceFile("static/problem11.txt");
         Integer[][] square = FilesHelper.readAllLines(file)
                 .stream()
@@ -47,14 +49,14 @@ public interface SecondSolutionsImpl {
         return y >= 0 && y < squareSize && x >= 0 && x < squareSize;
     }
 
-    default Integer Twelve() {
+    private static Integer Twelve() {
         for (int i = 1; ; i++) {
             Integer triangleNumber = MathsHelper.triangleNumber(i);
             if (MathsHelper.findDivisors(triangleNumber).size() > 500) { return triangleNumber; }
         }
     }
 
-    default String Thirteen() {
+    private static String Thirteen() {
         File file = FilesHelper.getResourceFile("static/problem13.txt");
         List<String> numbers = FilesHelper.readAllLines(file);
         BigInteger result = BigInteger.ZERO;
@@ -62,7 +64,7 @@ public interface SecondSolutionsImpl {
         return result.toString().substring(0, 10);
     }
 
-    default Long Fourteen() {
+    private static Long Fourteen() {
         long result = -1L;
         int maxCollatz = -1;
         for (long i = 1L; i < 1000000; i++) {
@@ -84,17 +86,17 @@ public interface SecondSolutionsImpl {
         return result;
     }
 
-    default Long Fifteen() {
+    private static Long Fifteen() {
         return MathsHelper.binomial(40, 20);
     }
 
-    default Integer Sixteen() {
+    private static Integer Sixteen() {
         return Arrays.stream(BigInteger.TWO.pow(1000).toString().split(""))
                 .map(Integer::parseInt)
                 .reduce(0, Integer::sum);
     }
 
-    default Integer Seventeen() {
+    private static Integer Seventeen() {
         String[] digits = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
         String[] teens = {"eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
         String[] tens = {"ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
@@ -109,5 +111,61 @@ public interface SecondSolutionsImpl {
             }
         }
         return result;
+    }
+
+    private static Integer Eighteen() {
+        File file = FilesHelper.getResourceFile("static/problem18.txt");
+        List<List<Integer>> numbers = FilesHelper.readAllLines(file)
+                .stream()
+                .map(line -> Arrays.stream(line.split(" "))
+                        .map(Integer::parseInt)
+                        .collect(Collectors.toList())
+                )
+                .collect(Collectors.toList());
+
+        for (int i = numbers.size() - 2; i >= 0; i--) {
+            for (int j = 0; j < numbers.get(i).size(); j++) {
+                int maxPath = numbers.get(i).get(j) + Collections.max(List.of(numbers.get(i + 1).get(j), numbers.get(i + 1).get(j + 1)));
+                numbers.get(i).set(j, maxPath);
+            }
+        }
+        return numbers.get(0).get(0);
+    }
+
+    private static Integer Nineteen() {
+        int result = 0;
+        Calendar date = Calendar.getInstance();
+        date.set(1901, Calendar.JANUARY, 1);
+
+        while (date.get(Calendar.YEAR) < 2001) {
+            date.add(Calendar.MONTH, 1);
+            if (date.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) { result++; }
+        }
+
+        return result;
+    }
+
+    private static Integer Twenty() {
+        return Arrays.stream(BigIntegerHelper.factorial(100).toString().split(""))
+                .map(Integer::parseInt)
+                .reduce(0, Integer::sum);
+    }
+
+    public static String getAnswer(int index) {
+        Object answer;
+        switch (index) {
+            case 11 -> answer = Eleven();
+            case 12 -> answer = Twelve();
+            case 13 -> answer = Thirteen();
+            case 14 -> answer = Fourteen();
+            case 15 -> answer = Fifteen();
+            case 16 -> answer = Sixteen();
+            case 17 -> answer = Seventeen();
+            case 18 -> answer = Eighteen();
+            case 19 -> answer = Nineteen();
+            case 20 -> answer = Twenty();
+            default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found");
+        }
+        return answer.toString();
     }
 }

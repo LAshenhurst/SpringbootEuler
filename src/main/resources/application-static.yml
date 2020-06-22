@@ -17,3 +17,8 @@ static:
     - "15. Find the number of routes through a 20x20 grid"
     - "16. Find the sum of the digits of 2 ^ 1000"
     - "17. Find the number of letters used writing out the numbers 1 to 1000"
+    - "18. Find the maximum path from top to bottom of the given triangle"
+    - "19. Find the number of Sundays that fell on the first of the month during the 20th century"
+    - "20. Find the sum of the digits in the number 100!"
+    - "21. Find the sum of the amicable numbers under 10000"
+    - "22. Find the sum of the name scores in the given text file"
