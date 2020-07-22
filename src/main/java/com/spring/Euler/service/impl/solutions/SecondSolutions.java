@@ -151,7 +151,7 @@ public final class SecondSolutions {
                 .reduce(0, Integer::sum);
     }
 
-    public static String getAnswer(int index) {
+    public static String getAnswer(int index) throws ApiError {
         Object answer;
         switch (index) {
             case 11 -> answer = Eleven();
