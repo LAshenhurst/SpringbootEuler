@@ -1,6 +1,6 @@
 package com.spring.Euler.service.impl.solutions;
 
-import com.spring.Euler.common.ApiError;
+import com.spring.Euler.common.exception.ApiError;
 import com.spring.Euler.helper.BigIntegerHelper;
 import com.spring.Euler.helper.FilesHelper;
 import com.spring.Euler.helper.MathsHelper;

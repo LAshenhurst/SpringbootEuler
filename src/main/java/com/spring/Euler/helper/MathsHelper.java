@@ -3,7 +3,9 @@ package com.spring.Euler.helper;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public class MathsHelper {
@@ -36,7 +38,7 @@ public class MathsHelper {
         else { return x > y ? greatestCommonDivisor(x - y, y) : greatestCommonDivisor(x, y - x); }
     }
 
-    public static List<Integer> sieveOfEratosthenes(final int target) {
+    public static List<Integer> sieveOfEratosthenes(Integer target) {
         final boolean[] nonPrime = new boolean[target + 1];
         for (int i = 2; i <= Math.sqrt(target); i++) {
             if (!nonPrime[i]) {
@@ -83,7 +85,21 @@ public class MathsHelper {
     {
         if (k > n - k) { k = n - k; }
         long result = 1;
-        for (int i = 1, m = n; i <= k; i++, m--) { result = result * m / i; }
+        for (int i = 1, m = n; i <= k; i++, m--) { result *= m / i; }
         return result;
+    }
+
+    public static Integer recurringCycle(int denominator) {
+        Map<Integer, Integer> decimals = new HashMap<>();
+        int numerator = 1;
+        int position = 0;
+        while (numerator != 0) {
+            position++;
+            numerator *= 10;
+            if (decimals.containsKey(numerator)) { return position - decimals.get(numerator); }
+            else { decimals.put(numerator, position); }
+            numerator %= denominator;
+        }
+        return 0;
     }
 }

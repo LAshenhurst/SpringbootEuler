@@ -1,4 +1,4 @@
-package com.spring.Euler.common;
+package com.spring.Euler.common.exception;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,6 +1,6 @@
 package com.spring.Euler.helper;
 
-import com.spring.Euler.common.ApiError;
+import com.spring.Euler.common.exception.ApiError;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 
@@ -11,11 +11,20 @@ import java.util.List;
 
 @Slf4j
 public class FilesHelper {
-    public static File getResourceFile(String path){
+    public static File getResourceFile(String path) {
         String filePath = ClassLoader.getSystemResource(path).getFile();
-        File file = new File(filePath);
+        return getFile(filePath);
+    }
+
+    public static File getFile(String path){
+        File file = new File(path);
         if (file.exists()) { return file; }
         else { throw new ApiError(HttpStatus.NOT_FOUND, "File not found"); }
+    }
+
+    public static List<String> readAllLine(String path) {
+        File file = getFile(path);
+        return readAllLines(file);
     }
 
     public static List<String> readAllLines(File file) {

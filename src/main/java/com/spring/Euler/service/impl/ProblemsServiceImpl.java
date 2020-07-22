@@ -1,6 +1,6 @@
 package com.spring.Euler.service.impl;
 
-import com.spring.Euler.common.ApiError;
+import com.spring.Euler.common.exception.ApiError;
 import com.spring.Euler.configuration.properties.ProblemsProperties;
 import com.spring.Euler.service.ProblemsService;
 import lombok.RequiredArgsConstructor;

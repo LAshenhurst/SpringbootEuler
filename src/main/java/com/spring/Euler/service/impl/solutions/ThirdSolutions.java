@@ -1,8 +1,7 @@
 package com.spring.Euler.service.impl.solutions;
 
-import com.spring.Euler.common.ApiError;
+import com.spring.Euler.common.exception.ApiError;
 import com.spring.Euler.domain.Alphabet;
-import com.spring.Euler.helper.BigIntegerHelper;
 import com.spring.Euler.helper.FilesHelper;
 import com.spring.Euler.helper.StringHelper;
 import com.spring.Euler.helper.MathsHelper;
@@ -79,6 +78,16 @@ public final class ThirdSolutions {
         return index;
     }
 
+    private static Integer TwentySix() {
+        int result = 0;
+        int maxRecip = 0;
+        for (int i = 2; i < 1000; i++) {
+            int reciprocal = MathsHelper.recurringCycle(i);
+            if (reciprocal > maxRecip) { result = i; maxRecip = reciprocal; }
+        }
+        return result;
+    }
+
     public static String getAnswer(int index) {
         Object answer;
         switch (index) {
@@ -87,6 +96,7 @@ public final class ThirdSolutions {
             case 23 -> answer = TwentyThree();
             case 24 -> answer = TwentyFour();
             case 25 -> answer = TwentyFive();
+            case 26 -> answer = TwentySix();
             default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found");
         }
         return answer.toString();
