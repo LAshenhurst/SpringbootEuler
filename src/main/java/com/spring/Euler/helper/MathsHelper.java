@@ -63,6 +63,10 @@ public class MathsHelper {
         return result;
     }
 
+    public static Boolean isAbundant(int n) {
+        return (findDivisors(n).stream().reduce(0, Integer::sum) - n) > n;
+    }
+
     public static Long collatz(Long n) {
         return n % 2 == 0 ? n / 2 : ((3 * n) + 1);
     }
@@ -78,10 +82,8 @@ public class MathsHelper {
     public static Long binomial(int n, int k)
     {
         if (k > n - k) { k = n - k; }
-
         long result = 1;
         for (int i = 1, m = n; i <= k; i++, m--) { result = result * m / i; }
-
         return result;
     }
 }

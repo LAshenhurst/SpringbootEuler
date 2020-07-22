@@ -11,7 +11,7 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.stream.IntStream;
 
-public class FirstSolutions {
+public final class FirstSolutions {
     private static Integer One() { return IntStream.rangeClosed(0, 999).filter(x -> x % 3 == 0 || x % 5 == 0).sum(); }
 
     private static Integer Two() {

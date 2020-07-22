@@ -22,3 +22,6 @@ static:
     - "20. Find the sum of the digits in the number 100!"
     - "21. Find the sum of the amicable numbers under 10000"
     - "22. Find the sum of the name scores in the given text file"
+    - "23. Find the sum of all positive integers that cannot be written as the sum of two abundant numbers"
+    - "24. Find the 1,000,000th lexicographical permutation of the digits 0,1,2,3,4,5,6,7,8,9"
+    - "25. Find the index of the first number in the Fibonacci sequence with 1000 digits"

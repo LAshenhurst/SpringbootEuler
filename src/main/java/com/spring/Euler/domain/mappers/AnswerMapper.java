@@ -11,7 +11,7 @@ public abstract class AnswerMapper {
         return Answer.builder()
                 .problem(problem)
                 .answer(answer)
-                .eulerURL("https://projecteuler.net/problem=" + val)
+                .eulerURL(val != null ? "https://projecteuler.net/problem=" + val : "N/A")
                 .build();
     }
 

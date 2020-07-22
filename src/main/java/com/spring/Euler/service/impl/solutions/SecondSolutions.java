@@ -11,7 +11,7 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class SecondSolutions {
+public final class SecondSolutions {
     private static Integer Eleven() {
         File file = FilesHelper.getResourceFile("static/problem11.txt");
         Integer[][] square = FilesHelper.readAllLines(file)

@@ -3,7 +3,9 @@ package com.spring.Euler.controller;
 import com.spring.Euler.domain.Answer;
 import com.spring.Euler.domain.mappers.AnswerMapper;
 import com.spring.Euler.helper.MathsHelper;
+import com.spring.Euler.helper.StringHelper;
 import com.spring.Euler.service.AnswersService;
+import com.spring.Euler.service.impl.solutions.ThirdSolutions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -29,7 +31,7 @@ public class AnswersController {
 
     @GetMapping("/test")
     public Mono<Answer> runTestMethod() {
-        return Mono.just(MathsHelper.sieveOfEratosthenes(100))
+        return Mono.just(ThirdSolutions.getAnswer(25))
                 .map(answer -> answerMapper.generate("Result of Test Method", answer.toString(), null));
     }
 
