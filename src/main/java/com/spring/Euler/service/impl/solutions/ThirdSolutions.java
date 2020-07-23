@@ -88,7 +88,47 @@ public final class ThirdSolutions {
         return result;
     }
 
-    public static String getAnswer(int index) {
+    private static Integer TwentySeven() {
+        int result = 0;
+        int maxN = 0;
+        for (int a = -1000; a < 1000; a++) {
+            for (int b = -1000; b < 1000; b++) {
+                boolean prime = true;
+                int n = 0;
+                while (prime) {
+                    int formula = (n * n) + (a * n) + b;
+                    if (!MathsHelper.isPrime(formula)) { prime = false; }
+                    n++;
+                }
+                if (n > maxN) { maxN = n; result = a * b; }
+            }
+        }
+        return result;
+    }
+
+    private static Integer TwentyEight() {
+        int spiralMax = 1001 * 1001;
+        int step = 0;
+        int result = 1;
+        for (int i = 1; i < spiralMax; i += (step * 4)) {
+            step += 2;
+            result += (4 * i) + (10 * step);
+        }
+        return result;
+    }
+
+    private static Integer TwentyNine() {
+        List<Double> terms = new ArrayList<>();
+        for (int a = 2; a <= 100; a++) {
+            for (int b = 2; b <= 100; b++) {
+                double term = Math.pow(a, b);
+                if (!terms.contains(term)) { terms.add(term); }
+            }
+        }
+        return terms.size();
+    }
+
+    public static Object getAnswer(int index) {
         Object answer;
         switch (index) {
             case 21 -> answer = TwentyOne();
@@ -97,8 +137,11 @@ public final class ThirdSolutions {
             case 24 -> answer = TwentyFour();
             case 25 -> answer = TwentyFive();
             case 26 -> answer = TwentySix();
+            case 27 -> answer = TwentySeven();
+            case 28 -> answer = TwentyEight();
+            case 29 -> answer = TwentyNine();
             default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found");
         }
-        return answer.toString();
+        return answer;
     }
 }

@@ -1,9 +1,9 @@
 package com.spring.Euler.service;
 
-import reactor.core.publisher.Flux;
+import com.spring.Euler.domain.Response;
 import reactor.core.publisher.Mono;
 
 public interface ProblemsService {
-    Mono<String> readProblem(int problemNumber);
-    Flux<String> readProblems();
+    Mono<Response> readProblem(int problemNumber);
+    Mono<Response> readProblems();
 }

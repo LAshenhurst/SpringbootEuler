@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
 @Slf4j
@@ -27,18 +28,14 @@ public class AnswersServiceImpl implements AnswersService {
     public Mono<Response> getAnswer(Integer index) {
         return Mono.justOrEmpty(index)
                 .switchIfEmpty(Mono.error(new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
-                .map(val -> {
-                    if (val <= problemsProperties.getProblems().size()) {
-                        return responseMapper.generate(problemsProperties.getProblem(val), getSolution(val), String.valueOf(val), true);
-                    } else { throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found"); }
-                });
+                .map(val -> responseMapper.generate(problemsProperties.getProblem(val), timedGetSolution(val), String.valueOf(val), true));
     }
 
     public Flux<Response> getAnswers(Integer range) {
         return Mono.justOrEmpty(range)
-                .switchIfEmpty(Mono.just(problemsProperties.getProblems().size()))
+                .switchIfEmpty(Mono.just(problemsProperties.getAllProblems().size()))
                 .flatMapMany(finalRange -> {
-                    if (finalRange <= problemsProperties.getProblems().size()) {
+                    if (finalRange <= problemsProperties.getAllProblems().size()) {
                         return Flux.fromStream(IntStream.rangeClosed(1, finalRange).boxed());
                     } else { throw new ApiError(HttpStatus.BAD_REQUEST, "range value too high"); }
                 })
@@ -52,6 +49,20 @@ public class AnswersServiceImpl implements AnswersService {
         else if (index <= 20) { answer = SecondSolutions.getAnswer(index); }
         else if (index <= 30) { answer = ThirdSolutions.getAnswer(index);}
         else { throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found"); }
+
+        return answer;
+    }
+
+    private Object timedGetSolution(Integer index) {
+        Object answer;
+
+        ExecutorService executor = Executors.newCachedThreadPool();
+        Callable<Object> getSolutionTask = () -> getSolution(index);
+        Future<Object> future = executor.submit(getSolutionTask);
+
+        try { answer = future.get(30, TimeUnit.SECONDS); }
+        catch (TimeoutException ex) { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Solution method timed out."); }
+        catch (InterruptedException | ExecutionException ex) { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()); }
 
         return answer;
     }

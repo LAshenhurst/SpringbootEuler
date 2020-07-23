@@ -96,7 +96,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({ Exception.class })
     public ResponseEntity<Object> handleAll(Exception ex) {
-        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.BAD_REQUEST, ex.getLocalizedMessage());
+        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
         return new ResponseEntity<>(response, response.getStatus());
     }
 }

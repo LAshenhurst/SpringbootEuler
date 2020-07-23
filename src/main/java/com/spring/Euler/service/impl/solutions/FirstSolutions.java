@@ -102,7 +102,7 @@ public final class FirstSolutions {
                 .reduce(0L, Long::sum);
     }
 
-    public static String getAnswer(int index) {
+    public static Object getAnswer(int index) {
         Object answer;
         switch (index) {
             case 1 -> answer = One();
@@ -117,6 +117,6 @@ public final class FirstSolutions {
             case 10 -> answer = Ten();
             default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found");
         }
-        return answer.toString();
+        return answer;
     }
 }

@@ -1,5 +1,6 @@
 package com.spring.Euler.controller;
 
+import com.spring.Euler.domain.Response;
 import com.spring.Euler.service.ProblemsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -19,13 +20,13 @@ public class ProblemsController {
 
     @GetMapping(path = "/{index}")
     @ApiOperation(value = "Returns the problem description for a Project Euler problem, only solved problems will appear.")
-    public Mono<String> getProblem(@Valid @PathVariable Integer index) {
+    public Mono<Response> getProblem(@Valid @PathVariable Integer index) {
         return problemsService.readProblem(index);
     }
 
     @GetMapping("/all")
     @ApiOperation(value = "Returns the problem descriptions for all Project Euler problems that have been solved.")
-    public Flux<String> getProblems() {
+    public Mono<Response> getProblems() {
         return problemsService.readProblems();
     }
 }

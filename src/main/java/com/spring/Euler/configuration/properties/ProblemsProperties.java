@@ -1,23 +1,28 @@
 package com.spring.Euler.configuration.properties;
 
-import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import com.spring.Euler.helper.FilesHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 
-import javax.validation.constraints.NotEmpty;
-
+import javax.annotation.PostConstruct;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+@Slf4j
 @Configuration
-@ConfigurationProperties(prefix = "static")
 public class ProblemsProperties {
-
-    @NotEmpty
     private List<String> problems = new ArrayList<>();
 
-    public String getProblem(int index) {
+    public String getProblem(Integer index) {
         return problems.get(index - 1);
+    }
+
+    public List<String> getAllProblems() { return problems; }
+
+    @PostConstruct
+    private void init() {
+        File file = FilesHelper.getResourceFile("static/problemsList.txt");
+        problems = FilesHelper.readAllLines(file);
     }
 }

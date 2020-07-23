@@ -122,7 +122,7 @@ public class FunctionsServiceImpl implements FunctionsService {
     public Mono<Response> readAllFileLines(String absolutePath) {
         return Mono.just(responseMapper.generate(
                 "Attempt to read all lines of the file at this path: " + absolutePath,
-                FilesHelper.readAllLine(absolutePath),
+                FilesHelper.readAllLines(absolutePath),
                 null,
                 false
         ));

@@ -151,7 +151,7 @@ public final class SecondSolutions {
                 .reduce(0, Integer::sum);
     }
 
-    public static String getAnswer(int index) throws ApiError {
+    public static Object getAnswer(int index) throws ApiError {
         Object answer;
         switch (index) {
             case 11 -> answer = Eleven();
@@ -166,6 +166,6 @@ public final class SecondSolutions {
             case 20 -> answer = Twenty();
             default -> throw new ApiError(HttpStatus.NOT_FOUND, "Problem not found");
         }
-        return answer.toString();
+        return answer;
     }
 }

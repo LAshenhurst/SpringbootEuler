@@ -22,7 +22,7 @@ public class FilesHelper {
         else { throw new ApiError(HttpStatus.NOT_FOUND, "File not found"); }
     }
 
-    public static List<String> readAllLine(String path) {
+    public static List<String> readAllLines(String path) {
         File file = getFile(path);
         return readAllLines(file);
     }
