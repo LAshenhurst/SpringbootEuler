@@ -31,7 +31,7 @@ public class FunctionsServiceImpl implements FunctionsService {
 
     public Mono<Response> findNextPrime(Integer n) {
         return Mono.just(responseMapper.generate(
-                "Determine first prime number greater than the " + n + ".",
+                "Determine first prime number greater than " + n + ".",
                 MathsHelper.findNextPrime(n),
                 null,
                 false

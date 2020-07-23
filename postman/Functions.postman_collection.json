@@ -1,0 +1,319 @@
+{
+	"info": {
+		"_postman_id": "a89ee064-b47a-4283-8e58-109bd800465c",
+		"name": "Functions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "prime",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/prime?value=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"prime"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "next-prime",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/next-prime?value=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"next-prime"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "palindrome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/palindrome?value=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"palindrome"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greatest-common-divisor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/greatest-common-divisor?x=10&y=12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"greatest-common-divisor"
+					],
+					"query": [
+						{
+							"key": "x",
+							"value": "10"
+						},
+						{
+							"key": "y",
+							"value": "12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "lowest-common-multiple",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/lowest-common-multiple?x=10&y=12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"lowest-common-multiple"
+					],
+					"query": [
+						{
+							"key": "x",
+							"value": "10"
+						},
+						{
+							"key": "y",
+							"value": "12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sieve-of-eratosthenes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/sieve-of-eratosthenes?value=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"sieve-of-eratosthenes"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "triangle-number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/triangle-number?value=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"triangle-number"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "divisors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/divisors?value=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"divisors"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "binomial-expansion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/binomial-expansion?n=6&k=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"binomial-expansion"
+					],
+					"query": [
+						{
+							"key": "n",
+							"value": "6"
+						},
+						{
+							"key": "k",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "factorial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/permutations?permuteObject=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"permutations"
+					],
+					"query": [
+						{
+							"key": "permuteObject",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "read-all-lines",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/v1/functions/read-all-lines?absolutePath=path/to/file",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"read-all-lines"
+					],
+					"query": [
+						{
+							"key": "absolutePath",
+							"value": "path/to/file"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "permutations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
