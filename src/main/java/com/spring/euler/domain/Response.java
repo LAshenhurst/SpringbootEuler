@@ -23,8 +23,8 @@ public class Response {
 
     private String notes;
 
+    private String computeTime;
+
     @NotNull
     private String timestamp;
-
-    private String computeTime;
 }

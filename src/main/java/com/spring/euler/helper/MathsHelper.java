@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class MathsHelper {
+public abstract class MathsHelper {
 
     public static boolean isPrime(long n) {
         if (n <= 2) { return false; }

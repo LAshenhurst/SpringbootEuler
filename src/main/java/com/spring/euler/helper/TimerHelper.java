@@ -9,7 +9,7 @@ import org.springframework.util.StopWatch;
 import java.util.concurrent.*;
 
 @Slf4j
-public class TimerHelper {
+public abstract class TimerHelper {
     public static TimedSolution run(Callable<Object> method) {
         Object answer;
         String  computeTime;
@@ -22,7 +22,7 @@ public class TimerHelper {
             watch.start();
             answer = future.get(30, TimeUnit.SECONDS);
             watch.stop();
-            computeTime = watch.getTotalTimeMillis() == 0 ? "< 1 ms" : + watch.getTotalTimeMillis() + " ms";
+            computeTime = watch.getTotalTimeMillis() == 0 ? "< 1 ms" : watch.getTotalTimeMillis() + " ms";
         }
         catch (TimeoutException ex) { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Solution method timed out."); }
         catch (InterruptedException | ExecutionException ex) {

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-public class StringHelper {
+public abstract class StringHelper {
     public static List<String> permutations(String permuteObject) {
         List<String> chars = permuteObject.chars().mapToObj(e -> String.valueOf((char) e)).collect(Collectors.toList());
         if (StringUtils.isEmpty(chars)) { return Collections.emptyList(); }

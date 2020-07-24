@@ -10,7 +10,7 @@ import java.nio.file.Files;
 import java.util.List;
 
 @Slf4j
-public class FilesHelper {
+public abstract class FilesHelper {
     public static File getResourceFile(String path) {
         String filePath = ClassLoader.getSystemResource(path).getFile();
         return getFile(filePath);
