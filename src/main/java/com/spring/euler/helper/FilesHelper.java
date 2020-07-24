@@ -19,7 +19,10 @@ public class FilesHelper {
     public static File getFile(String path){
         File file = new File(path);
         if (file.exists()) { return file; }
-        else { throw new ApiError(HttpStatus.NOT_FOUND, "File not found"); }
+        else {
+            String errorMessage = "File not found at: " + path;
+            throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
+        }
     }
 
     public static List<String> readAllLines(String path) {

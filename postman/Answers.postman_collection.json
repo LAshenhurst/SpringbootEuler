@@ -71,7 +71,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/v1/answers?range=3",
+					"raw": "localhost:8080/v1/answers?min=1&max=5",
 					"host": [
 						"localhost"
 					],
@@ -82,8 +82,12 @@
 					],
 					"query": [
 						{
-							"key": "range",
-							"value": "3"
+							"key": "min",
+							"value": "1"
+						},
+						{
+							"key": "max",
+							"value": "5"
 						}
 					]
 				}
