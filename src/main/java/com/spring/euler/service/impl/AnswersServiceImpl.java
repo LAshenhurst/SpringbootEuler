@@ -32,6 +32,7 @@ public class AnswersServiceImpl implements AnswersService {
         return Mono.justOrEmpty(index)
                 .switchIfEmpty(Mono.error(new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
                 .map(val -> {
+                    log.info("Calculate the solution to problem {}", val);
                     TimedSolution timedSolution = solutionsService.getSolution(val);
                     return responseMapper.generate(problemsService.getProblem(val), timedSolution.getAnswer(), String.valueOf(val), true, timedSolution.getComputeTime());
                 });
@@ -39,29 +40,29 @@ public class AnswersServiceImpl implements AnswersService {
 
     public Mono<Response> getRandomAnswer() {
         Integer random = (int) (Math.random() * (problemsService.getAllProblems().size() - 1));
-        return getAnswer(random);
+        return Mono.just(random)
+                .flatMap(this::getAnswer);
     }
 
     public Mono<Response> getAnswers(Integer min, Integer max, Boolean all) {
         if (all) { min = 1; max = problemsService.getAllProblems().size(); }
-        if (min == null || min <= 0) { throw new ApiError(HttpStatus.BAD_REQUEST, "Minimum value for the range must be greater than zero."); }
-        if (max == null || max < min || max > problemsService.getAllProblems().size()) {
+        else if (min == null || min <= 0) { throw new ApiError(HttpStatus.BAD_REQUEST, "Minimum value for the range must be greater than zero."); }
+        else if (max == null || max < min || max > problemsService.getAllProblems().size()) {
             String errorMessage = "Maximum value for the range must be greater than " + min + " and less than " + problemsService.getAllProblems().size();
             throw new ApiError(HttpStatus.BAD_REQUEST, errorMessage);
         }
 
+        String task = "Calculate the solutions to problems " + min + " - " + max;
+        log.info(task);
         List<Integer> indices = IntStream.rangeClosed(min, max).boxed().collect(Collectors.toList());
-        List<TimedSolution> solutions = solutionsService.getSolutions(indices);
-        Map<Integer, TimedSolution> answers = IntStream.rangeClosed(0, indices.size() - 1).boxed()
-                .collect(Collectors.toMap(indices::get, solutions::get));
 
+        return Mono.just(solutionsService.getSolutions(indices))
+                .map(solutions -> {
+                    Map<Integer, TimedSolution> answers = IntStream.rangeClosed(0, indices.size() - 1)
+                            .boxed()
+                            .collect(Collectors.toMap(indices::get, solutions::get));
 
-        return Mono.just(responseMapper.generate(
-                "Generate the solutions to problems " + min + " - " + max,
-                answers,
-                null,
-                false,
-                null
-        ));
+                    return responseMapper.generate(task, answers, null, false, null);
+                });
     }
 }

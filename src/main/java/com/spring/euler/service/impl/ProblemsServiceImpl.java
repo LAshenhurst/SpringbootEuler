@@ -19,8 +19,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class ProblemsServiceImpl implements ProblemsService {
-    private final ResponseMapper responseMapper;
     private List<String> problems;
+    private final ResponseMapper responseMapper;
 
     public Mono<Response> readProblem(Integer index) {
         if (index <= 0 || index > problems.size()) {

@@ -32,9 +32,6 @@ public class SolutionsServiceImpl implements SolutionsService {
     }
 
     private Callable<Object> createCallable(Integer x) {
-        return () -> {
-            log.info("Calculating solution to problem {}", x + 1);
-            return solutions.get(x).run();
-        };
+        return () -> solutions.get(x).run();
     }
 }
