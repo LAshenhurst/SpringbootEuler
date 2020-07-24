@@ -20,50 +20,10 @@
 20. Find the sum of the digits in 100!
 21. Find the sum of all amicable pairs under 10,000
 22. Apply a set of operations to a given list of 5000+ names.
-23. Sum of all positive integers that cannot be written as the sum of two abunant numbers
+23. Sum of all positive integers that cannot be written as the sum of two abundant numbers
 24. Find the millionth entry in the lexicographic permutation of 0,1,2,3,4,5,6,7,8,9
 25. Which Fibonacci number is the first to contain 1000 digits
 26. Find the value of d (d < 1000) where 1/d contains longest recurring cycle.
-27. Find f(a,b) =  n^2 + an + b that produces that largest number of consecutive primes.
+27. Find f(a,b) =  n^2 + a * n + b that produces that largest number of consecutive primes.
 28. Find the sum of the diagonal entries on a 1001 by 1001 clockwise spiral
 29. How many distinct terms in a^b for all a and b in [2, 100]
-30. Find all numbers that can be written as the sum of the fifth power of their digits
-31. Find all possible methods of creating £2 with any number of coins.
-32. Find the sum of all z such that x * y = z uses all digits 1 - 9
-33. Find the denominator of the product of all fractions that can be non-trivially simplified
-34. Find all numbers that are equal to the sum of the factorial of their digits
-35. How many circular primes are there below 1,000,000
-36. Find the sum of all numbers under 1,000,000 that are palindromic in base 2 and 10
-37. Find the sum of all truncatable prime numbers
-38. Find the largest 9-digit pandigital number formed from the concatenated product
-39. Which perimeter of a triangle p <= 1000 has the most solutions
-40. Product of select digits in decimal created through concatenating of integers.
-41. What is the largest n-digit pandigital prime that exists?
-42. Given a list of words, find which are 'Triangle words'.
-43. Find the largest 0 to 9 pandigital with sub-string divisibility
-44. Find the pair of pentagonal numbers whos sum and difference and pentagonal, with the smallest difference
-45. Find the first number above 40755 that is a triangle, pentagonal, and hexagonal number.
-46. Find the smallest odd composite that cannot be written as the sum of a prime plus a sqaure.
-47. Find the first four numbers to have four distinct prime factors.
-48. Find the last ten digits of 1^1 + 2^2 + 3^3 + ... + 1000^1000
-49. Concatenate the three four-digit numbers that are both prime, and permutations
-50. Which prime, below one million, can be written as the sum of the most consecutive primes?
-51. Find the smallest prime which, by replacing part of the number is part of an eight prime value family.
-52. Find the smallest possible integer x, such that 2x, 3x, 4x, 5x, and 6x, contain the same digits
-53. How many, not necessarily distinct, values of nCr, for 1 <= n <= 100, are greater than one million?
-54. A text file contains 1000 random poker hands for two players. How many times does player one win?
-55. How many Lychrel numbers are there below 10,000?
-56. What is the maximum possible value from the addition of the digits in a^b, where a, b < 100?
-57. In the first thousand expansions of root two, how many fractions contain more digits in the numerator than denominator?
-58. For an anticlockwise spiral of numbers, what is the length required to get the percentage of primes on the diagonals below 10%?
-59. Use XOR decryption to decrypt the given text file
-60. Find the lowest sum of five primes which any two concatenated make another prime
-61. Find the sum of the only six cyclic 4-digit numbers for which each polygonal type is represented by another number in the set.
-62. Find the cubic for which four permutations are also cubic.
-63. How many n-digit positive integers are also nth powers?
-69. Find the number under 1,000,000 with the highest Euler's Totient ratio.
-74. How many numbers under 1,000,000 have a digit factorial chain with exactly 60 non-repeating terms?
-99. Given 1000 large base/exponent pairs find the pair with the largest numeric value without calculating it.
-102. Given a list of the three points for 1000 triangles, find which triangles contain the origin
-124. Find the 10,000th value of the ordered list of the product of the distinct prime factors for the numbers 1 to 100,000
-125. Find all numbers less than 10^8 that are both palindromic and can be written as the sum of consecutive squares.
