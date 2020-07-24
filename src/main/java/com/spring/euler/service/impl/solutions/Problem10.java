@@ -2,7 +2,7 @@ package com.spring.euler.service.impl.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public class Problem10 {
+public abstract class Problem10 {
     public static Long run() {
         return MathsHelper.sieveOfEratosthenes(2000000)
                 .stream()

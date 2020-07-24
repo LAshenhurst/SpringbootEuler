@@ -2,7 +2,7 @@ package com.spring.euler.service.impl.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public class Problem14 {
+public abstract class Problem14 {
     public static Long run() {
         long result = -1L;
         int maxCollatz = -1;

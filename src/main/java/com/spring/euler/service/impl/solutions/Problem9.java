@@ -1,6 +1,6 @@
 package com.spring.euler.service.impl.solutions;
 
-public class Problem9 {
+public abstract class Problem9 {
     public static Integer run() {
         int result = -1;
         for (int c = 1000; c > 0; c--) {

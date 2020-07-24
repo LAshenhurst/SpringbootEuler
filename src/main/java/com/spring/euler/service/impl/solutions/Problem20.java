@@ -4,7 +4,7 @@ import com.spring.euler.helper.BigIntegerHelper;
 
 import java.util.Arrays;
 
-public class Problem20 {
+public abstract class Problem20 {
     public static Integer run() {
         return Arrays.stream(BigIntegerHelper.factorial(100).toString().split(""))
                 .map(Integer::parseInt)

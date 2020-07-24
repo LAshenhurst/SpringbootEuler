@@ -2,7 +2,7 @@ package com.spring.euler.service.impl.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public class Problem23 {
+public abstract class Problem23 {
     public static Integer run() {
         Boolean[] abundantNumbers = new Boolean[28124];
         int result = 0;

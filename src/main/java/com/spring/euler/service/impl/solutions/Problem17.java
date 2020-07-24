@@ -1,6 +1,6 @@
 package com.spring.euler.service.impl.solutions;
 
-public class Problem17 {
+public abstract class Problem17 {
     public static Integer run() {
         String[] digits = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
         String[] teens = {"eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};

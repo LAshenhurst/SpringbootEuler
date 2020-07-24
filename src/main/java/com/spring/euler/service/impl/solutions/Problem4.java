@@ -2,7 +2,7 @@ package com.spring.euler.service.impl.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public class Problem4 {
+public abstract class Problem4 {
     public static Integer run() {
         int result = -1;
         for (int i = 100; i < 1000; i++) {

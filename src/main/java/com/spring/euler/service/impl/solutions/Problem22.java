@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Problem22 {
+public abstract class Problem22 {
     public static Integer run() {
         File file = FilesHelper.getResourceFile("static/problem22.txt");
         List<String> names = FilesHelper.readAllLines(file)

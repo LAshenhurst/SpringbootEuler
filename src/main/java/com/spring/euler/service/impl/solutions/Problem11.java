@@ -5,7 +5,7 @@ import com.spring.euler.helper.FilesHelper;
 import java.io.File;
 import java.util.List;
 
-public class Problem11 {
+public abstract class Problem11 {
     public static Integer run() {
         File file = FilesHelper.getResourceFile("static/problem11.txt");
         Integer[][] square = FilesHelper.readAllLines(file)

@@ -2,7 +2,7 @@ package com.spring.euler.service.impl.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public class Problem3 {
+public abstract class Problem3 {
     public static Long run() {
         long result = 600851475143L;
         int prime = 2;

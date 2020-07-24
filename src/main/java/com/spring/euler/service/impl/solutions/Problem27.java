@@ -2,7 +2,7 @@ package com.spring.euler.service.impl.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public class Problem27 {
+public abstract class Problem27 {
     public static Integer run() {
         int result = 0;
         int maxN = 0;

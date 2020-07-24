@@ -2,7 +2,7 @@ package com.spring.euler.service.impl.solutions;
 
 import java.util.Calendar;
 
-public class Problem19 {
+public abstract class Problem19 {
     public static Integer run() {
         int result = 0;
         Calendar date = Calendar.getInstance();
