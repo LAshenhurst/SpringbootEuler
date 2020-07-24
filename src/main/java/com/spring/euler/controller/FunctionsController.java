@@ -25,45 +25,31 @@ public class FunctionsController {
 
     @GetMapping("/next-prime")
     @ApiOperation(value = "Find the first prime number larger than a provided integer.")
-    public Mono<Response> findNextPrime(@Valid @RequestParam Integer value) {
-        return functionsService.findNextPrime(value);
-    }
+    public Mono<Response> findNextPrime(@Valid @RequestParam Integer value) { return functionsService.findNextPrime(value); }
 
     @GetMapping("/palindrome")
     @ApiOperation(value = "Determine whether a provided integer is a palindrome")
-    public Mono<Response> isPalindrome(@Valid @RequestParam Integer value) {
-        return functionsService.isPalindrome(value);
-    }
+    public Mono<Response> isPalindrome(@Valid @RequestParam Integer value) { return functionsService.isPalindrome(value); }
 
     @GetMapping("/lowest-common-multiple")
     @ApiOperation(value = "Determine the lowest common multiple of two provided integers x and y")
-    public Mono<Response> lowestCommonMultiple(@Valid @RequestParam Integer x, @Valid @RequestParam Integer y) {
-        return functionsService.lowestCommonMultiple(x, y);
-    }
+    public Mono<Response> lowestCommonMultiple(@Valid @RequestParam Integer x, @Valid @RequestParam Integer y) { return functionsService.lowestCommonMultiple(x, y); }
 
     @GetMapping("/greatest-common-divisor")
     @ApiOperation(value = "Determine the greatest common divisor of two provided integers x and y")
-    public Mono<Response> greatestCommonDivisor(@Valid @RequestParam Integer x, @Valid @RequestParam Integer y) {
-        return functionsService.greatestCommonDivisor(x, y);
-    }
+    public Mono<Response> greatestCommonDivisor(@Valid @RequestParam Integer x, @Valid @RequestParam Integer y) { return functionsService.greatestCommonDivisor(x, y); }
 
     @GetMapping("/sieve-of-eratosthenes")
     @ApiOperation(value = "Use the Sieve of Eratosthenes algorithm to determine all prime numbers below a provided integer")
-    public Mono<Response> sieveOfEratosthenes(@Valid @RequestParam Integer value) {
-        return functionsService.sieveOfEratosthenes(value);
-    }
+    public Mono<Response> sieveOfEratosthenes(@Valid @RequestParam Integer value) { return functionsService.sieveOfEratosthenes(value); }
 
     @GetMapping("/triangle-number")
     @ApiOperation(value = "Determine the triangle number based on the provided integer")
-    public Mono<Response> triangleNumber(@Valid @RequestParam Integer value) {
-        return functionsService.triangleNumber(value);
-    }
+    public Mono<Response> triangleNumber(@Valid @RequestParam Integer value) { return functionsService.triangleNumber(value); }
 
     @GetMapping("/divisors")
     @ApiOperation(value = "Determine all divisors of the provided integer")
-    public Mono<Response> findDivisors(@Valid @RequestParam Integer value) {
-        return functionsService.findDivisors(value);
-    }
+    public Mono<Response> findDivisors(@Valid @RequestParam Integer value) { return functionsService.findDivisors(value); }
 
     @GetMapping("/abundant")
     @ApiOperation(value = "Determine whether a provided integer is an abundant number")
@@ -73,9 +59,7 @@ public class FunctionsController {
 
     @GetMapping("/binomial-expansion")
     @ApiOperation(value = "Determine the binomial expansion of two given integers n and k")
-    public Mono<Response> binomialExpansion(@Valid @RequestParam Integer n, @Valid @RequestParam Integer k) {
-        return functionsService.binomialExpansion(n, k);
-    }
+    public Mono<Response> binomialExpansion(@Valid @RequestParam Integer n, @Valid @RequestParam Integer k) { return functionsService.binomialExpansion(n, k); }
 
     @GetMapping("/factorial")
     @ApiOperation(value = "Calculate the factorial of a given integer.")
@@ -85,13 +69,9 @@ public class FunctionsController {
 
     @GetMapping("/read-all-lines")
     @ApiOperation(value = "Read all lines of a file both local and accessible by this server by providing the absolute path")
-    public Mono<Response> readAllLines(@Valid @RequestParam String absolutePath) {
-        return functionsService.readAllFileLines(absolutePath);
-    }
+    public Mono<Response> readAllLines(@Valid @RequestParam String absolutePath) { return functionsService.readAllFileLines(absolutePath); }
 
     @GetMapping("/permutations")
     @ApiOperation(value = "Determine all permutations of the provided string")
-    public Mono<Response> permutations(@Valid @RequestParam String permuteObject) {
-        return functionsService.permutations(permuteObject);
-    }
+    public Mono<Response> permutations(@Valid @RequestParam String permuteObject) { return functionsService.permutations(permuteObject); }
 }

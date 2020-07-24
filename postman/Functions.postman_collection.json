@@ -257,7 +257,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/v1/functions/permutations?permuteObject=10",
+					"raw": "localhost:8080/v1/functions/factorial?value=10",
 					"host": [
 						"localhost"
 					],
@@ -265,11 +265,11 @@
 					"path": [
 						"v1",
 						"functions",
-						"permutations"
+						"factorial"
 					],
 					"query": [
 						{
-							"key": "permuteObject",
+							"key": "value",
 							"value": "10"
 						}
 					]
@@ -309,7 +309,22 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "localhost:8080/v1/functions/permutations?permuteObject=10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"permutations"
+					],
+					"query": [
+						{
+							"key": "permuteObject",
+							"value": "10"
+						}
+					]
 				}
 			},
 			"response": []

@@ -17,7 +17,7 @@ public class FunctionsServiceImpl implements FunctionsService {
     private final ResponseMapper responseMapper;
 
     private Mono<Response> createResponse(String task, Object answer, String notes, String computeTime) {
-        return Mono.just(responseMapper.generate(task, answer, null, false, computeTime));
+        return Mono.just(responseMapper.generate(task, answer, notes, false, computeTime));
     }
 
     public Mono<Response> isPrime(Integer n) {

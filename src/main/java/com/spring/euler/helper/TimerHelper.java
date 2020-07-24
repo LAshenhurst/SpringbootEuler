@@ -25,7 +25,10 @@ public class TimerHelper {
             computeTime = watch.getTotalTimeMillis() == 0 ? "< 1 ms" : + watch.getTotalTimeMillis() + " ms";
         }
         catch (TimeoutException ex) { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Solution method timed out."); }
-        catch (InterruptedException | ExecutionException ex) { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()); }
+        catch (InterruptedException | ExecutionException ex) {
+            if (ex.getCause() instanceof ApiError) { throw new ApiError(((ApiError) ex.getCause()).getStatus(), ex.getCause().getMessage()); }
+            else { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()); }
+        }
 
         return TimedSolution.builder()
                 .answer(answer)
