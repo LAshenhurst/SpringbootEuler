@@ -4,6 +4,7 @@ import com.spring.euler.common.exception.ApiError;
 import com.spring.euler.domain.Response;
 import com.spring.euler.domain.TimedSolution;
 import com.spring.euler.domain.mappers.ResponseMapper;
+import com.spring.euler.helper.TimerHelper;
 import com.spring.euler.service.AnswersService;
 import com.spring.euler.service.ProblemsService;
 import com.spring.euler.service.SolutionsService;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Slf4j
@@ -46,8 +49,12 @@ public class AnswersServiceImpl implements AnswersService {
             String errorMessage = "Maximum value for the range must be greater than " + min + " and less than " + problemsService.getAllProblems().size();
             throw new ApiError(HttpStatus.BAD_REQUEST, errorMessage);
         }
-        Map<Integer, Object> answers = new HashMap<>();
-        IntStream.rangeClosed(min, max).boxed().forEach(x -> answers.put(x, solutionsService.getSolution(x)));
+
+        List<Integer> indices = IntStream.rangeClosed(min, max).boxed().collect(Collectors.toList());
+        List<TimedSolution> solutions = solutionsService.getSolutions(indices);
+        Map<Integer, TimedSolution> answers = IntStream.rangeClosed(0, indices.size() - 1).boxed()
+                .collect(Collectors.toMap(indices::get, solutions::get));
+
 
         return Mono.just(responseMapper.generate(
                 "Generate the solutions to problems " + min + " - " + max,

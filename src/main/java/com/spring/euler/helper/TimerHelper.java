@@ -6,16 +6,29 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StopWatch;
 
+import java.util.List;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 @Slf4j
 public abstract class TimerHelper {
-    public static <T> TimedSolution run(Callable<T> method) {
-        T answer;
-        String  computeTime;
+    private static final ExecutorService executor = Executors.newCachedThreadPool();
 
-        ExecutorService executor = Executors.newCachedThreadPool();
+    public static <T> TimedSolution run(Callable<T> method) {
         Future<T> future = executor.submit(method);
+        return processMethod(future);
+    }
+
+    public static <T> List<TimedSolution> runMany(List<Callable<T>> methods) {
+        return methods.stream()
+                .map(executor::submit)
+                .map(TimerHelper::processMethod)
+                .collect(Collectors.toList());
+    }
+
+    private static <T> TimedSolution processMethod(Future<T> future) {
+        T answer;
+        String computeTime;
 
         try {
             StopWatch watch = new StopWatch();
