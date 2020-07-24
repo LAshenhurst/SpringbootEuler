@@ -4,8 +4,6 @@ import lombok.Data;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import javax.validation.constraints.NotNull;
 
@@ -13,18 +11,10 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonInclude(Include.NON_NULL)
-public class Response {
-    @NotNull
-    private String task;
-
+public class TimedSolution {
     @NotNull
     private Object answer;
 
-    private String notes;
-
     @NotNull
-    private String timestamp;
-
     private String computeTime;
 }

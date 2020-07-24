@@ -16,13 +16,14 @@ public abstract class ResponseMapper {
         return val != null ? "https://projecteuler.net/problem=" + val : null;
     }
 
-    public Response generate(String task, Object answer, String notes, Boolean isEuler) {
+    public Response generate(String task, Object answer, String notes, Boolean isEuler, String computeTime) {
         String finalNotes = isEuler ? generateEuler(notes) : notes;
         return Response.builder()
                 .task(task)
                 .answer(answer)
                 .notes(finalNotes)
                 .timestamp(format.format(new Date()))
+                .computeTime(computeTime)
                 .build();
     }
 

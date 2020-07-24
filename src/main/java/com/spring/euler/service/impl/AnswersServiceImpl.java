@@ -2,6 +2,7 @@ package com.spring.euler.service.impl;
 
 import com.spring.euler.common.exception.ApiError;
 import com.spring.euler.domain.Response;
+import com.spring.euler.domain.TimedSolution;
 import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.service.AnswersService;
 import com.spring.euler.service.ProblemsService;
@@ -27,7 +28,10 @@ public class AnswersServiceImpl implements AnswersService {
     public Mono<Response> getAnswer(Integer index) {
         return Mono.justOrEmpty(index)
                 .switchIfEmpty(Mono.error(new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
-                .map(val -> responseMapper.generate(problemsService.getProblem(val), solutionsService.getSolution(val), String.valueOf(val), true));
+                .map(val -> {
+                    TimedSolution timedSolution = solutionsService.getSolution(val);
+                    return responseMapper.generate(problemsService.getProblem(val), timedSolution.getAnswer(), String.valueOf(val), true, timedSolution.getComputeTime());
+                });
     }
 
     public Mono<Response> getRandomAnswer() {
@@ -49,7 +53,8 @@ public class AnswersServiceImpl implements AnswersService {
                 "Generate the solutions to problems " + min + " - " + max,
                 answers,
                 null,
-                false
+                false,
+                null
         ));
     }
 }

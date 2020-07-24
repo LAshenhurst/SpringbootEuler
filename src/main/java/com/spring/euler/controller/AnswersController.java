@@ -37,7 +37,7 @@ public class AnswersController {
     @ApiOperation(value = "Runs a specified method for testing purposes.")
     public Mono<Response> runTestMethod() {
         return Mono.just(Problem29.run())
-                .map(answer -> responseMapper.generate("Result of Test Method", answer, null, false));
+                .map(answer -> responseMapper.generate("Result of Test Method", answer, null, false, null));
     }
 
     @GetMapping("/range")

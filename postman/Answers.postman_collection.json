@@ -71,14 +71,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/v1/answers?min=1&max=5",
+					"raw": "localhost:8080/v1/answers/range?min=1&max=5",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"v1",
-						"answers"
+						"answers",
+						"range"
 					],
 					"query": [
 						{

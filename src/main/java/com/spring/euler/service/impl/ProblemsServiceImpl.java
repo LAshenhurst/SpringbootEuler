@@ -32,7 +32,8 @@ public class ProblemsServiceImpl implements ProblemsService {
                 "Retrieve the description for problem " + index,
                 problems.get(index - 1),
                 null,
-                false
+                false,
+                null
         ));
     }
 
@@ -41,7 +42,8 @@ public class ProblemsServiceImpl implements ProblemsService {
                 "Retrieve all listed Project Euler project descriptions.",
                 problems,
                 null,
-                false
+                false,
+                null
         ));
     }
 

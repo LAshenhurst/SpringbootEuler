@@ -1,5 +1,7 @@
 package com.spring.euler.service;
 
+import com.spring.euler.domain.TimedSolution;
+
 public interface SolutionsService {
-    Object getSolution(Integer index);
+    TimedSolution getSolution(Integer index);
 }
