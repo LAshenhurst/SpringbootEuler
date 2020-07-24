@@ -1,4 +1,4 @@
-package com.spring.euler.service.impl.solutions;
+package com.spring.euler.solutions;
 
 public abstract class Problem17 {
     public static Integer run() {

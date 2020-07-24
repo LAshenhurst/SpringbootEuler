@@ -1,4 +1,4 @@
-package com.spring.euler.service.impl.solutions;
+package com.spring.euler.solutions;
 
 import com.spring.euler.domain.Alphabet;
 import com.spring.euler.helper.FilesHelper;

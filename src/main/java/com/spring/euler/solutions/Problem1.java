@@ -1,4 +1,4 @@
-package com.spring.euler.service.impl.solutions;
+package com.spring.euler.solutions;
 
 import java.util.stream.IntStream;
 

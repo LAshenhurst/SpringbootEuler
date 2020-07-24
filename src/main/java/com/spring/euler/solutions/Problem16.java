@@ -1,4 +1,4 @@
-package com.spring.euler.service.impl.solutions;
+package com.spring.euler.solutions;
 
 import java.math.BigInteger;
 import java.util.Arrays;

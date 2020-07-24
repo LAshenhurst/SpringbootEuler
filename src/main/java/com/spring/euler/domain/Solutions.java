@@ -1,14 +1,14 @@
 package com.spring.euler.domain;
 
-import com.spring.euler.service.impl.solutions.*;
+import com.spring.euler.solutions.*;
 
 public enum Solutions {
     ONE          { @Override public Object run() { return Problem1.run(); } },
     TWO          { @Override public Object run() { return Problem2.run(); } },
     THREE        { @Override public Object run() { return Problem3.run(); } },
-    FOUR         {  @Override public Object run() { return Problem4.run(); } },
+    FOUR         { @Override public Object run() { return Problem4.run(); } },
     FIVE         { @Override public Object run() { return Problem5.run(); } },
-    SIX          {  @Override public Object run() { return Problem6.run(); } },
+    SIX          { @Override public Object run() { return Problem6.run(); } },
     SEVEN        { @Override public Object run() { return Problem7.run(); } },
     EIGHT        { @Override public Object run() { return Problem8.run(); } },
     NINE         { @Override public Object run() { return Problem9.run(); } },

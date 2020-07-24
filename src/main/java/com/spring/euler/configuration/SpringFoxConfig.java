@@ -22,9 +22,7 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .tags(answersTag)
-                .tags(problemsTag)
-                .tags(functionsTag)
+                .tags(answersTag, problemsTag, functionsTag)
                 .select()
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())

@@ -24,7 +24,7 @@ public class ProblemsServiceImpl implements ProblemsService {
 
     public Mono<Response> readProblem(Integer index) {
         if (index <= 0 || index > problems.size()) {
-            String errorMessage = "Problem " + index + " not found.";
+            String errorMessage = "Problem " + index + " not found. Problems 1 - " + problems.size() + " are solved.";
            throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
         }
 
