@@ -10,12 +10,12 @@ import java.util.concurrent.*;
 
 @Slf4j
 public abstract class TimerHelper {
-    public static TimedSolution run(Callable<Object> method) {
-        Object answer;
+    public static <T> TimedSolution run(Callable<T> method) {
+        T answer;
         String  computeTime;
 
         ExecutorService executor = Executors.newCachedThreadPool();
-        Future<Object> future = executor.submit(method);
+        Future<T> future = executor.submit(method);
 
         try {
             StopWatch watch = new StopWatch();
