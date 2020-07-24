@@ -17,7 +17,8 @@ public class ProblemsProperties {
     private List<String> problems = new ArrayList<>();
 
     public String getProblem(Integer index) {
-        if (index > problems.size()) {
+        if (index < 0) { throw new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be greater than zero."); }
+        else if (index > problems.size()) {
             String errorMessage = "Problem " + index + " not found. Problems listed are 1 - " + problems.size();
             throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
         }
