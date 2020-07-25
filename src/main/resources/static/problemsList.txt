@@ -27,3 +27,11 @@
 27. Find f(a,b) =  n^2 + a * n + b that produces that largest number of consecutive primes.
 28. Find the sum of the diagonal entries on a 1001 by 1001 clockwise spiral
 29. How many distinct terms in a^b for all a and b in [2, 100]
+30. Find all numbers that can be written as the sum of the fifth power of their digits
+31. Find all possible methods of creating £2 with any number of coins
+32. Find the sum of all z such that x * y = z uses all digits 1 - 9
+33. Find the denominator of the product of all fractions that can be non-trivially simplified
+34. Find all numbers that are equal to the sum of the factorial of their digits
+35. How many circular primes are there below 1,000,000
+36. Find the sum of all numbers under 1,000,000 that are palindromic in base 2 and 10
+37. Find the sum of all truncatable prime numbers

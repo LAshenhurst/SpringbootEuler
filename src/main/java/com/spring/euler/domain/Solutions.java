@@ -31,7 +31,15 @@ public enum Solutions {
     TWENTY_SIX   { @Override public Object run() { return Problem26.run(); } },
     TWENTY_SEVEN { @Override public Object run() { return Problem27.run(); } },
     TWENTY_EIGHT { @Override public Object run() { return Problem28.run(); } },
-    TWENTY_NINE  { @Override public Object run() { return Problem29.run(); } };
+    TWENTY_NINE  { @Override public Object run() { return Problem29.run(); } },
+    THIRTY       { @Override public Object run() { return Problem30.run(); } },
+    THIRTY_ONE   { @Override public Object run() { return Problem31.run(); } },
+    THIRTY_TWO   { @Override public Object run() { return Problem32.run(); } },
+    THIRTY_THREE { @Override public Object run() { return Problem33.run(); } },
+    THIRTY_FOUR  { @Override public Object run() { return Problem34.run(); } },
+    THIRTY_FIVE  { @Override public Object run() { return Problem35.run(); } },
+    THIRTY_SIX   { @Override public Object run() { return Problem36.run(); } },
+    THIRTY_SEVEN { @Override public Object run() { return Problem37.run(); } };
 
     public abstract Object run();
 }

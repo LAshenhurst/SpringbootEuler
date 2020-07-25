@@ -74,4 +74,8 @@ public class FunctionsController {
     @GetMapping("/permutations")
     @ApiOperation(value = "Determine all permutations of the provided string")
     public Mono<Response> permutations(@Valid @RequestParam String permuteObject) { return functionsService.permutations(permuteObject); }
+
+    @GetMapping("/pandigital")
+    @ApiOperation(value = "Determine whether a given string is a pandigital number")
+    public Mono<Response> pandigital(@Valid @RequestParam String value) { return functionsService.isPandigital(value); }
 }

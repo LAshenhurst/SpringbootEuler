@@ -9,6 +9,8 @@ public interface FunctionsService {
 
     Mono<Response> isPalindrome(Integer value);
 
+    Mono<Response> isPandigital(String value);
+
     Mono<Response> lowestCommonMultiple(Integer x, Integer y);
     Mono<Response> greatestCommonDivisor(Integer x, Integer y);
 

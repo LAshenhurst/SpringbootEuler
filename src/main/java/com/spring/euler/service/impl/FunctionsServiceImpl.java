@@ -26,15 +26,21 @@ public class FunctionsServiceImpl implements FunctionsService {
         return createResponse(task, timedSolution.getAnswer(), null, timedSolution.getComputeTime());
     }
 
-    public Mono<Response> findNextPrime(Integer n) {
-        String task = "Determine first prime number greater than " + n + ".";
-        TimedSolution timedSolution = TimerHelper.run(() -> MathsHelper.findNextPrime(n));
+    public Mono<Response> isPalindrome(Integer value) {
+        String task = "Determine whether " + value + " is a palindrome.";
+        TimedSolution timedSolution = TimerHelper.run(() -> StringHelper.isPalindrome(String.valueOf(value)));
         return createResponse(task, timedSolution.getAnswer(), null, timedSolution.getComputeTime());
     }
 
-    public Mono<Response> isPalindrome(Integer value) {
-        String task = "Determine whether " + value + " is a palindrome.";
-        TimedSolution timedSolution = TimerHelper.run(() -> MathsHelper.isPalindrome(value));
+    public Mono<Response> isPandigital(String value) {
+        String task = "Determine whether " + value + " is pandigital.";
+        TimedSolution timedSolution = TimerHelper.run(() -> MathsHelper.isPandigital(value));
+        return createResponse(task, timedSolution.getAnswer(), null, timedSolution.getComputeTime());
+    }
+
+    public Mono<Response> findNextPrime(Integer n) {
+        String task = "Determine first prime number greater than " + n + ".";
+        TimedSolution timedSolution = TimerHelper.run(() -> MathsHelper.findNextPrime(n));
         return createResponse(task, timedSolution.getAnswer(), null, timedSolution.getComputeTime());
     }
 
