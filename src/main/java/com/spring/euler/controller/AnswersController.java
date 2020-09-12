@@ -3,8 +3,7 @@ package com.spring.euler.controller;
 import com.spring.euler.domain.Response;
 import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.service.AnswersService;
-import com.spring.euler.solutions.Problem29;
-import com.spring.euler.solutions.Problem37;
+import com.spring.euler.solutions.Problem38;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +36,7 @@ public class AnswersController {
     @GetMapping("/test")
     @ApiOperation(value = "Runs a specified method for testing purposes.")
     public Mono<Response> runTestMethod() {
-        return Mono.just(Problem37.run())
+        return Mono.just(Problem38.run())
                 .map(answer -> responseMapper.generate("Result of Test Method", answer, null, false, null));
     }
 

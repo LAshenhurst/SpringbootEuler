@@ -1,11 +1,13 @@
 package com.spring.euler.service.impl;
 
+import com.spring.euler.common.exception.ApiError;
 import com.spring.euler.domain.Solutions;
 import com.spring.euler.domain.TimedSolution;
 import com.spring.euler.helper.TimerHelper;
 import com.spring.euler.service.SolutionsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,7 @@ public class SolutionsServiceImpl implements SolutionsService {
     private final List<Solutions> solutions = List.of(Solutions.values());
 
     public TimedSolution getSolution(Integer index) {
+        if (index >= solutions.size()) { throw new ApiError(HttpStatus.NOT_FOUND, "Solution not found."); }
         return TimerHelper.run(createCallable(index - 1));
     }
 

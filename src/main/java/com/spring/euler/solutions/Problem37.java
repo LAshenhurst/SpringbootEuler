@@ -3,10 +3,8 @@ package com.spring.euler.solutions;
 import com.spring.euler.helper.MathsHelper;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import java.util.HashSet;
 
 @Slf4j
 public abstract class Problem37 {
