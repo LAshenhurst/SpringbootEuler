@@ -36,3 +36,5 @@
 36. Find the sum of all numbers under 1,000,000 that are palindromic in base 2 and 10
 37. Find the sum of all truncatable prime numbers
 38. Find the largest 1 to 9 pandigital number that can be formed as the concatenated product of an integer with (1, 2, ..., n)
+39. Find the number under 1000 with the largest number of pythagorian triplets
+40. Find the product of the 1st, 10th, 100th, 1000th, 10000th, 100000th, and 1000000th digits of the decimal created by concatenating positive integers

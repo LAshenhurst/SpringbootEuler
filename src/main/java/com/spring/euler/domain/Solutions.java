@@ -39,7 +39,10 @@ public enum Solutions {
     THIRTY_FOUR  { @Override public Object run() { return Problem34.run(); } },
     THIRTY_FIVE  { @Override public Object run() { return Problem35.run(); } },
     THIRTY_SIX   { @Override public Object run() { return Problem36.run(); } },
-    THIRTY_SEVEN { @Override public Object run() { return Problem37.run(); } };
+    THIRTY_SEVEN { @Override public Object run() { return Problem37.run(); } },
+    THIRTY_EIGHT { @Override public Object run() { return Problem38.run(); } },
+    THIRTY_NINE  { @Override public Object run() { return Problem39.run(); } },
+    FORTY        { @Override public Object run() { return Problem40.run(); } };
 
     public abstract Object run();
 }
