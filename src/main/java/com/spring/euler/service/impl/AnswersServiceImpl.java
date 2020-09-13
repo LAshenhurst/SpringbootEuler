@@ -2,6 +2,7 @@ package com.spring.euler.service.impl;
 
 import com.spring.euler.common.exception.ApiError;
 import com.spring.euler.domain.Response;
+import com.spring.euler.domain.Solutions;
 import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.helper.SolutionsHelper;
 import com.spring.euler.helper.TimerHelper;
@@ -28,20 +29,26 @@ public class AnswersServiceImpl implements AnswersService {
         return Mono.justOrEmpty(index)
                 .switchIfEmpty(Mono.error(new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
                 .map(SolutionsHelper::getSolution)
-                .map(timedSolution -> ResponseMapper.generate(problemsService.getProblem(index), timedSolution.getAnswer(), String.valueOf(index), true, timedSolution.getComputeTime()))
+                .flatMap(timedSolution -> problemsService.readProblem(index)
+                                            .map(problem -> ResponseMapper.generate(
+                                                    problem,
+                                                    timedSolution.getAnswer(),
+                                                    String.valueOf(index),
+                                                    true,
+                                                    timedSolution.getComputeTime()
+                                            ))
+                )
                 .doOnSubscribe(sub -> log.info("Calculate the solution to problem {}", index));
     }
 
-    public Mono<Response> getRandomAnswer() {
-        Integer random = (int) (Math.random() * (problemsService.getAllProblems().size() - 1));
-        return Mono.just(random).flatMap(this::getAnswer);
-    }
-
-    public Mono<Response> getAnswers(Integer min, Integer max, Boolean all) {
-        if (all) { min = 1; max = problemsService.getAllProblems().size(); }
-        else if (min == null || min <= 0) { throw new ApiError(HttpStatus.BAD_REQUEST, "Minimum value for the range must be greater than zero."); }
-        else if (max == null || max < min || max > problemsService.getAllProblems().size()) {
-            String errorMessage = "Maximum value for the range must be greater than " + min + " and less than " + problemsService.getAllProblems().size();
+    public Mono<Response> getAnswers(Integer min, Integer max) {
+        if (min == null && max == null) { min = 1; max = Solutions.values().length; }
+        else if (min == null || min <= 0 || min > Solutions.values().length) {
+            String errorMessage = "Minimum value for the range must be greater than zero and less than " + Solutions.values().length + ".";
+            throw new ApiError(HttpStatus.BAD_REQUEST, errorMessage);
+        }
+        else if (max == null || max < min || max > Solutions.values().length) {
+            String errorMessage = "Maximum value for the range must be greater than " + min + " and less than " + Solutions.values().length;
             throw new ApiError(HttpStatus.BAD_REQUEST, errorMessage);
         }
 
@@ -58,7 +65,7 @@ public class AnswersServiceImpl implements AnswersService {
     }
 
     public Mono<Response> testMethod() {
-        return Mono.just(TimerHelper.run(Problem44::run, false))
+        return Mono.just(TimerHelper.run(Problem50::run, false))
                 .map(timedSolution ->
                         ResponseMapper.generate(
                                 "Test Method",

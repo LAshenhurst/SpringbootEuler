@@ -1,38 +1,42 @@
 package com.spring.euler.service;
 
-import com.spring.euler.domain.Response;
+import com.spring.euler.domain.TimedSolution;
 import reactor.core.publisher.Mono;
 
 public interface FunctionsService {
-    Mono<Response> alphabeticalValue(String text);
+    Mono<TimedSolution> alphabeticalValue(String text);
 
-    Mono<Response> isPrime(Integer n);
-    Mono<Response> findNextPrime(Integer n);
+    Mono<TimedSolution> isPrime(Integer n);
+    Mono<TimedSolution> findNextPrime(Integer n);
+    Mono<TimedSolution> primeFactors(Integer n);
 
-    Mono<Response> isPalindrome(Integer value);
+    Mono<TimedSolution> isPalindrome(Integer value);
 
-    Mono<Response> isPandigital(Long value);
+    Mono<TimedSolution> isPandigital(Long value);
 
-    Mono<Response> lowestCommonMultiple(Integer x, Integer y);
-    Mono<Response> greatestCommonDivisor(Integer x, Integer y);
+    Mono<TimedSolution> lowestCommonMultiple(Integer x, Integer y);
+    Mono<TimedSolution> greatestCommonDivisor(Integer x, Integer y);
 
-    Mono<Response> sieveOfEratosthenes(Integer x);
+    Mono<TimedSolution> sieveOfEratosthenes(Integer x);
 
-    Mono<Response> triangleNumber(Integer value);
-    Mono<Response> isTriangle(Integer t);
+    Mono<TimedSolution> triangleNumber(Integer value);
+    Mono<TimedSolution> isTriangle(Integer t);
 
-    Mono<Response> pentagonalNumber(Integer value);
-    Mono<Response> isPentagonal(Integer p);
+    Mono<TimedSolution> pentagonalNumber(Integer value);
+    Mono<TimedSolution> isPentagonal(Integer p);
 
-    Mono<Response> findDivisors(Integer value);
+    Mono<TimedSolution> hexagonalNumber(Integer value);
+    Mono<TimedSolution> isHexagonal(Integer h);
 
-    Mono<Response> isAbundant(Integer value);
+    Mono<TimedSolution> findDivisors(Integer value);
 
-    Mono<Response> binomialExpansion(Integer n, Integer k);
+    Mono<TimedSolution> isAbundant(Integer value);
 
-    Mono<Response> factorial(Integer value);
+    Mono<TimedSolution> binomialExpansion(Integer n, Integer k);
 
-    Mono<Response> readAllFileLines(String absolutePath);
+    Mono<TimedSolution> factorial(Integer value);
 
-    Mono<Response> permutations(String permuteObject);
+    Mono<TimedSolution> readAllFileLines(String absolutePath);
+
+    Mono<TimedSolution> permutations(String permuteObject);
 }

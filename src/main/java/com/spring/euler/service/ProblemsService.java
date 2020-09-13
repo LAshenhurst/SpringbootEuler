@@ -1,14 +1,9 @@
 package com.spring.euler.service;
 
-import com.spring.euler.domain.Response;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import java.util.List;
-
 public interface ProblemsService {
-    String getProblem(Integer index);
-    List<String> getAllProblems();
-
-    Mono<Response> readProblem(Integer index);
-    Mono<Response> readProblems();
+    Mono<String> readProblem(Integer index);
+    Flux<String> readProblems();
 }

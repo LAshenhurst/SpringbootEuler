@@ -42,3 +42,9 @@
 42. Find the number of words in a given text file where the alphabetical value is a triangle number
 43. Find the sum of all 0 to 9 pandigital numbers with the given substring divisibility property
 44. Find the two pentagonal numbers whose sum and difference are pentagonal, with minimal difference
+45. Find the first triangle number larger than 40755 that is also pentagonal and hexagonal
+46. Find the smallest odd composite number that cannot be written as the sum of a prime and twice a square
+47. Find the first number of four consecutive numbers which all have four distinct prime factors
+48. Find the last ten digits of 1^1 + 2^2 + 3^3 ... + 1000^1000
+49. Find the concatenation of the second sequence (not 1487) of three 4-digit numbers where the term increases by 3330, and all are prime
+50. Find the prime, below 1 million, that can be written as the sum of the most consecutive primes

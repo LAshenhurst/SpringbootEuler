@@ -46,7 +46,13 @@ public enum Solutions {
     FORTY_ONE    { @Override public Object run() { return Problem41.run(); } },
     FORTY_TWO    { @Override public Object run() { return Problem42.run(); } },
     FORTY_THREE  { @Override public Object run() { return Problem43.run(); } },
-    FORTY_FOUR   { @Override public Object run() { return Problem44.run(); } };
+    FORTY_FOUR   { @Override public Object run() { return Problem44.run(); } },
+    FORTY_FIVE   { @Override public Object run() { return Problem45.run(); } },
+    FORTY_SIX    { @Override public Object run() { return Problem46.run(); } },
+    FORTY_SEVEN  { @Override public Object run() { return Problem47.run(); } },
+    FORTY_EIGHT  { @Override public Object run() { return Problem48.run(); } },
+    FORTY_NINE   { @Override public Object run() { return Problem49.run(); } },
+    FIFTY        { @Override public Object run() { return Problem50.run(); } };
 
     public abstract Object run();
 }

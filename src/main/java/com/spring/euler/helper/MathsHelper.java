@@ -55,6 +55,12 @@ public abstract class MathsHelper {
         return isInteger((root + 1) / 6.0);
     }
 
+    public static Integer hexagonalNumber(int n) { return (2 * n * n) - n;}
+    public static Boolean isHexagonal(int h) {
+        double root = Math.sqrt((8.0 * h) + 1);
+        return isInteger((root + 1) / 4.0);
+    }
+
     public static List<Integer> findDivisors(int n) {
         List<Integer> result = new ArrayList<>();
         for (int i = 1; i * i <= n; i++) {
@@ -64,6 +70,15 @@ public abstract class MathsHelper {
             }
         }
         return result;
+    }
+
+    public static List<Integer> primeFactors(int n) {
+        if (n < 0) { return Collections.emptyList(); }
+        List<Integer> results = new ArrayList<>();
+        for (int i = 2; i < n; i++) {
+            while (n % i == 0) { results.add(i); n /= i; }
+        }
+        return results;
     }
 
     public static Boolean isAbundant(int n) {

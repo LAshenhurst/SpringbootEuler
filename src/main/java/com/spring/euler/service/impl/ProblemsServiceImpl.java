@@ -1,14 +1,13 @@
 package com.spring.euler.service.impl;
 
 import com.spring.euler.common.exception.ApiError;
-import com.spring.euler.domain.Response;
-import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.helper.FilesHelper;
 import com.spring.euler.service.ProblemsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import javax.annotation.PostConstruct;
@@ -21,41 +20,18 @@ import java.util.List;
 public class ProblemsServiceImpl implements ProblemsService {
     private List<String> problems;
 
-    public Mono<Response> readProblem(Integer index) {
+    public Mono<String> readProblem(Integer index) {
         if (index <= 0 || index > problems.size()) {
             String errorMessage = "Problem " + index + " not found. Problems 1 - " + problems.size() + " are solved.";
             throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
         }
 
-        return Mono.just(ResponseMapper.generate(
-                "Retrieve the description for problem " + index,
-                problems.get(index - 1),
-                null,
-                false,
-                null
-        ));
+        return Mono.just(problems.get(index - 1));
     }
 
-    public Mono<Response> readProblems() {
-        return Mono.just(ResponseMapper.generate(
-                "Retrieve all listed Project Euler project descriptions.",
-                problems,
-                null,
-                false,
-                null
-        ));
+    public Flux<String> readProblems() {
+        return Flux.fromStream(problems.stream());
     }
-
-    public String getProblem(Integer index) {
-        if (index < 0) { throw new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be greater than zero."); }
-        else if (index > problems.size()) {
-            String errorMessage = "Problem " + index + " not found. Problems listed are 1 - " + problems.size();
-            throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
-        }
-        else { return problems.get(index - 1); }
-    }
-
-    public List<String> getAllProblems() { return problems; }
 
     @PostConstruct
     private void init() {

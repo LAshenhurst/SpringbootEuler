@@ -1,7 +1,6 @@
 package com.spring.euler.controller;
 
 import com.spring.euler.domain.Response;
-import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.service.AnswersService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -17,8 +16,6 @@ import javax.validation.Valid;
 @RequestMapping("/v1/answers")
 public class AnswersController {
     private final AnswersService answersService;
-    private final ResponseMapper responseMapper;
-
 
     @GetMapping("/{index}")
     @ApiOperation(value = "Returns the answer to a solved problem.")
@@ -26,24 +23,14 @@ public class AnswersController {
         return answersService.getAnswer(index);
     }
 
-    @GetMapping("/random")
-    @ApiOperation(value = "Returns the answer to a random Project Euler problem.")
-    public Mono<Response> getRandomAnswer() {
-        return answersService.getRandomAnswer();
-    }
-
     @GetMapping("/test")
-    @ApiOperation(value = "Runs a specified method for testing purposes.")
+    @ApiOperation(value = "Runs a specific method for testing purposes.")
     public Mono<Response> runTestMethod() { return answersService.testMethod(); }
 
-    @GetMapping("/range")
-    @ApiOperation(value = "Returns a range of answers. Please be aware some methods take several seconds.")
-    public Mono<Response> getMultipleAnswers(@Valid @RequestParam Integer min,
-                                             @Valid @RequestParam Integer max) {
-        return answersService.getAnswers(min, max, false);
+    @GetMapping
+    @ApiOperation(value = "Returns a range of answers, or all answers if no min and max are provided. Some methods take several seconds.")
+    public Mono<Response> getMultipleAnswers(@Valid @RequestParam(required = false) Integer min,
+                                             @Valid @RequestParam(required = false) Integer max) {
+        return answersService.getAnswers(min, max);
     }
-
-    @GetMapping("/all")
-    @ApiOperation(value = "Returns all answers. Please be aware some methods take several seconds.")
-    public Mono<Response> getAllAnswers() { return answersService.getAnswers(null, null, true); }
 }

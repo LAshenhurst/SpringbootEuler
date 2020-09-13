@@ -1,6 +1,7 @@
 package com.spring.euler.controller;
 
 import com.spring.euler.domain.Response;
+import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.service.ProblemsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,12 +21,27 @@ public class ProblemsController {
     @GetMapping(path = "/{index}")
     @ApiOperation(value = "Returns the problem description for a Project Euler problem, only solved problems will appear.")
     public Mono<Response> getProblem(@Valid @PathVariable Integer index) {
-        return problemsService.readProblem(index);
+        return problemsService.readProblem(index)
+                .map(problem -> ResponseMapper.generate(
+                        "Return the description for problem " + index,
+                        problem,
+                        null,
+                        false,
+                        null
+                ));
     }
 
     @GetMapping("/all")
     @ApiOperation(value = "Returns the problem descriptions for all Project Euler problems that have been solved.")
     public Mono<Response> getProblems() {
-        return problemsService.readProblems();
+        return problemsService.readProblems()
+                .collectList()
+                .map(problemsList -> ResponseMapper.generate(
+                        "Return the descriptions for all solved problems",
+                        problemsList,
+                        null,
+                        false,
+                        null
+                ));
     }
 }

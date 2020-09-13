@@ -46,40 +46,19 @@
 			"response": []
 		},
 		{
-			"name": "getRandomAnswer",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/v1/answers/random",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"v1",
-						"answers",
-						"random"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "getMultipleAnswers",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/v1/answers/range?min=1&max=5",
+					"raw": "localhost:8080/v1/answers?min=1&max=5",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
 						"v1",
-						"answers",
-						"range"
+						"answers"
 					],
 					"query": [
 						{
@@ -101,7 +80,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/v1/answers/test",
+					"raw": "http://localhost:8080/v1/answers/test",
+					"protocol": "http",
 					"host": [
 						"localhost"
 					],
