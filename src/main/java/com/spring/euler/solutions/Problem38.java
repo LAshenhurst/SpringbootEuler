@@ -15,7 +15,7 @@ public abstract class Problem38 {
                 int finalI = i;
                 String concat = IntStream.rangeClosed(1, j).boxed().map(x -> String.valueOf(x * finalI)).collect(Collectors.joining(""));
                 if (concat.length() < 9) { continue; } else if (concat.length() > 9) { break; }
-                if (MathsHelper.isPandigital(concat)) { result = Math.max(result, Integer.parseInt(concat)); }
+                if (MathsHelper.isPandigital(Long.parseLong(concat))) { result = Math.max(result, Integer.parseInt(concat)); }
             }
         }
         return result;

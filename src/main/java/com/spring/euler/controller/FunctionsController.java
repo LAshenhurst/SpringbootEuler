@@ -17,6 +17,10 @@ import javax.validation.Valid;
 public class FunctionsController {
     private final FunctionsService functionsService;
 
+    @GetMapping("/alphabetical-value")
+    @ApiOperation(value = "Determine the sum of the alphabetical value of the characters in a given string")
+    public Mono<Response> alphabeticalValue(@Valid @RequestParam String text) { return functionsService.alphabeticalValue(text); }
+
     @GetMapping("/prime")
     @ApiOperation(value = "Determine whether a provided integer is a prime number or not.")
     public Mono<Response> isPrime(@Valid @RequestParam Integer value) {
@@ -46,6 +50,18 @@ public class FunctionsController {
     @GetMapping("/triangle-number")
     @ApiOperation(value = "Determine the triangle number based on the provided integer")
     public Mono<Response> triangleNumber(@Valid @RequestParam Integer value) { return functionsService.triangleNumber(value); }
+
+    @GetMapping("/triangle")
+    @ApiOperation(value = "Determine whether a given number is a triangle number")
+    public Mono<Response> isTriangle(@Valid @RequestParam Integer value) { return functionsService.isTriangle(value); }
+
+    @GetMapping("/pentagonal-number")
+    @ApiOperation(value = "Determine the pentagonal number based on the provided integer")
+    public Mono<Response> pentagonalNumber(@Valid @RequestParam Integer value) { return functionsService.pentagonalNumber(value); }
+
+    @GetMapping("/pentagonal")
+    @ApiOperation(value = "Determine whether a given number is a pentagonal number")
+    public Mono<Response> isPentagonal(@Valid @RequestParam Integer value) { return functionsService.isPentagonal(value); }
 
     @GetMapping("/divisors")
     @ApiOperation(value = "Determine all divisors of the provided integer")
@@ -77,5 +93,5 @@ public class FunctionsController {
 
     @GetMapping("/pandigital")
     @ApiOperation(value = "Determine whether a given string is a pandigital number")
-    public Mono<Response> pandigital(@Valid @RequestParam String value) { return functionsService.isPandigital(value); }
+    public Mono<Response> pandigital(@Valid @RequestParam Long value) { return functionsService.isPandigital(value); }
 }

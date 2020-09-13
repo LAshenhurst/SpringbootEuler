@@ -1,9 +1,11 @@
 package com.spring.euler.helper;
 
+import com.spring.euler.domain.Alphabet;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -51,5 +53,11 @@ public abstract class StringHelper {
             return result;
         }
         else { return List.of(rotateObject); }
+    }
+
+    public static Integer alphabeticalValue(String text) {
+        return Arrays.stream(text.split(" "))
+                .flatMap(word -> Arrays.stream(text.split("")).map(Alphabet::getIndex))
+                .reduce(0, Integer::sum);
     }
 }

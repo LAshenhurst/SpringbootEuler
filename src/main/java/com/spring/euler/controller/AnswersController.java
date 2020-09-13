@@ -3,7 +3,6 @@ package com.spring.euler.controller;
 import com.spring.euler.domain.Response;
 import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.service.AnswersService;
-import com.spring.euler.solutions.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -35,10 +34,7 @@ public class AnswersController {
 
     @GetMapping("/test")
     @ApiOperation(value = "Runs a specified method for testing purposes.")
-    public Mono<Response> runTestMethod() {
-        return Mono.just(Problem40.run())
-                .map(answer -> responseMapper.generate("Result of Test Method", answer, null, false, null));
-    }
+    public Mono<Response> runTestMethod() { return answersService.testMethod(); }
 
     @GetMapping("/range")
     @ApiOperation(value = "Returns a range of answers. Please be aware some methods take several seconds.")
@@ -49,7 +45,5 @@ public class AnswersController {
 
     @GetMapping("/all")
     @ApiOperation(value = "Returns all answers. Please be aware some methods take several seconds.")
-    public Mono<Response> getAllAnswers() {
-        return answersService.getAnswers(null, null, true);
-    }
+    public Mono<Response> getAllAnswers() { return answersService.getAnswers(null, null, true); }
 }

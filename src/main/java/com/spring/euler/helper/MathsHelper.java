@@ -2,14 +2,10 @@ package com.spring.euler.helper;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
+import java.util.*;
 
 @Slf4j
 public abstract class MathsHelper {
-
     public static boolean isPrime(long n) {
         if (n < 2) { return false; }
         for (long i = 2; i * i <= n; i++) {
@@ -47,6 +43,16 @@ public abstract class MathsHelper {
 
     public static Integer triangleNumber(int n) {
         return ((n * n) + n) / 2;
+    }
+    public static Boolean isTriangle(int t) {
+        double root = Math.sqrt((t * 8.0) + 1);
+        return isInteger((root + 1) / 2.0);
+    }
+
+    public static Integer pentagonalNumber(int n) { return (n * (3 * n - 1) / 2); }
+    public static Boolean isPentagonal(int p) {
+        double root = Math.sqrt((24.0 * p) + 1);
+        return isInteger((root + 1) / 6.0);
     }
 
     public static List<Integer> findDivisors(int n) {
@@ -98,10 +104,23 @@ public abstract class MathsHelper {
         return 0;
     }
 
-    public static Boolean isPandigital(String digits) {
-        for (int i = 1; i <= digits.length(); i++) {
-            if (!digits.contains(String.valueOf(i))) { return false; }
+    public static Boolean isPandigital(Long number) {
+        int digits = 0;
+        int count = 0;
+        int expected = 1023;
+
+        if (number < 0) { number = Math.abs(number); }
+
+        if (number < 1023456789) {
+            for (; number > 0; number /= 10, count++) {
+                if (digits == (digits |= 1 << (number - ((number / 10) * 10) - 1))) { return false; }
+            }
+            return digits == (1 << count) - 1;
+        } else {
+            for (; number > 0; number /= 10) {
+                digits |= 1 << (number - ((number / 10) * 10));
+            }
+            return digits == expected;
         }
-        return true;
     }
 }

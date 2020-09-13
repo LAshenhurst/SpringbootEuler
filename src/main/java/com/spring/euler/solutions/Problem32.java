@@ -12,7 +12,7 @@ public abstract class Problem32 {
             for (int j = 1; j <= i; j++) {
                 if (i % j == 0) {
                     String value = String.valueOf(i) + j + i / j;
-                    if (value.length() == 9 && MathsHelper.isPandigital(value) && !pandigitals.contains(i)) { pandigitals.add(i); }
+                    if (value.length() == 9 && MathsHelper.isPandigital(Long.parseLong(value)) && !pandigitals.contains(i)) { pandigitals.add(i); }
                 }
             }
         }

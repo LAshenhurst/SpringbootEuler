@@ -4,8 +4,10 @@ import com.spring.euler.common.exception.ApiError;
 import com.spring.euler.domain.Response;
 import com.spring.euler.domain.mappers.ResponseMapper;
 import com.spring.euler.helper.SolutionsHelper;
+import com.spring.euler.helper.TimerHelper;
 import com.spring.euler.service.AnswersService;
 import com.spring.euler.service.ProblemsService;
+import com.spring.euler.solutions.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,14 +22,13 @@ import java.util.stream.IntStream;
 @Service
 @RequiredArgsConstructor
 public class AnswersServiceImpl implements AnswersService {
-    private final ResponseMapper responseMapper;
     private final ProblemsService problemsService;
 
     public Mono<Response> getAnswer(Integer index) {
         return Mono.justOrEmpty(index)
                 .switchIfEmpty(Mono.error(new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
                 .map(SolutionsHelper::getSolution)
-                .map(timedSolution -> responseMapper.generate(problemsService.getProblem(index), timedSolution.getAnswer(), String.valueOf(index), true, timedSolution.getComputeTime()))
+                .map(timedSolution -> ResponseMapper.generate(problemsService.getProblem(index), timedSolution.getAnswer(), String.valueOf(index), true, timedSolution.getComputeTime()))
                 .doOnSubscribe(sub -> log.info("Calculate the solution to problem {}", index));
     }
 
@@ -50,8 +51,22 @@ public class AnswersServiceImpl implements AnswersService {
         return Mono.just(SolutionsHelper.getSolutions(indices))
                 .map(solutions -> IntStream.rangeClosed(0, indices.size() - 1)
                             .boxed()
-                            .collect(Collectors.toMap(indices::get, solutions::get)))
-                .map(answers -> responseMapper.generate(task, answers, null, false, null))
+                            .collect(Collectors.toMap(indices::get, solutions::get))
+                )
+                .map(answers -> ResponseMapper.generate(task, answers, null, false, null))
                 .doOnSubscribe(sub -> log.info(task));
+    }
+
+    public Mono<Response> testMethod() {
+        return Mono.just(TimerHelper.run(Problem44::run, false))
+                .map(timedSolution ->
+                        ResponseMapper.generate(
+                                "Test Method",
+                                timedSolution.getAnswer(),
+                                null,
+                                false,
+                                timedSolution.getComputeTime()
+                        )
+                );
     }
 }

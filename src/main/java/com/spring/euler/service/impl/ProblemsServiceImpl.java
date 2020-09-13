@@ -20,7 +20,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProblemsServiceImpl implements ProblemsService {
     private List<String> problems;
-    private final ResponseMapper responseMapper;
 
     public Mono<Response> readProblem(Integer index) {
         if (index <= 0 || index > problems.size()) {
@@ -28,7 +27,7 @@ public class ProblemsServiceImpl implements ProblemsService {
             throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
         }
 
-        return Mono.just(responseMapper.generate(
+        return Mono.just(ResponseMapper.generate(
                 "Retrieve the description for problem " + index,
                 problems.get(index - 1),
                 null,
@@ -38,7 +37,7 @@ public class ProblemsServiceImpl implements ProblemsService {
     }
 
     public Mono<Response> readProblems() {
-        return Mono.just(responseMapper.generate(
+        return Mono.just(ResponseMapper.generate(
                 "Retrieve all listed Project Euler project descriptions.",
                 problems,
                 null,

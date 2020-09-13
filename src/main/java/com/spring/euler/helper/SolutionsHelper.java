@@ -16,16 +16,14 @@ public abstract class SolutionsHelper {
 
     public static TimedSolution getSolution(Integer index) {
         if (index - 1 >= solutions.size()) { throw new ApiError(HttpStatus.NOT_FOUND, "Solution not found."); }
-        return TimerHelper.run(createCallable(index - 1));
+        return TimerHelper.run(createCallable(index - 1), true);
     }
 
     public static List<TimedSolution> getSolutions(List<Integer> indices) {
-        List<Callable<Object>> methods = indices
-                .stream()
+        return indices.stream()
                 .map(x -> createCallable(x - 1))
+                .map(callable -> TimerHelper.run(callable, true))
                 .collect(Collectors.toList());
-
-        return TimerHelper.runMany(methods);
     }
 
     private static Callable<Object> createCallable(Integer x) {
