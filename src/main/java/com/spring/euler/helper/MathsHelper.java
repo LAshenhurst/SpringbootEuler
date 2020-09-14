@@ -73,11 +73,16 @@ public abstract class MathsHelper {
     }
 
     public static List<Integer> primeFactors(int n) {
-        if (n < 0) { return Collections.emptyList(); }
+        if (n <= 1) { return Collections.emptyList(); }
+        List<Integer> primes = new ArrayList<>(List.of(2, 3, 5, 7, 11));
         List<Integer> results = new ArrayList<>();
-        for (int i = 2; i < n; i++) {
-            while (n % i == 0) { results.add(i); n /= i; }
+        while (n > 1 && !isPrime(n)) {
+            primes.add(findNextPrime(Collections.max(primes)));
+            for (Integer prime: primes) {
+                while (n % prime == 0) { results.add(prime); n /= prime; }
+            }
         }
+        if (isPrime(n)) { results.add(n); }
         return results;
     }
 
