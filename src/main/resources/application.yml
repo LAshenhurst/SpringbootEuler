@@ -1,9 +1,12 @@
 spring:
   application:
-    name: Euler
+    name: Spring-Boot-Euler
   profiles:
     active: static
   mvc:
     throw-exception-if-no-handler-found: true
   resources:
     add-mappings: false
+
+jwt:
+  secret: hashingalgorithmsecret

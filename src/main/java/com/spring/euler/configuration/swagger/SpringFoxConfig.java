@@ -1,4 +1,4 @@
-package com.spring.euler.configuration;
+package com.spring.euler.configuration.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,11 +18,12 @@ public class SpringFoxConfig extends WebMvcConfigurationSupport {
     private final Tag answersTag = new Tag("Answers", "This controller calculates and returns answers to Project Euler problems.");
     private final Tag problemsTag = new Tag("Problems", "This controller returns concise descriptions of Project Euler problems for which this server contains the solution.");
     private final Tag functionsTag = new Tag("Functions", "This controller provides access to some of the functions used to calculate Project Euler answers.");
+    private final Tag authenticationTag = new Tag("Authentication", "This controller provides the endpoint through which you can login and generate a JWT");
 
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .tags(answersTag, problemsTag, functionsTag)
+                .tags(answersTag, problemsTag, functionsTag, authenticationTag)
                 .select()
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())

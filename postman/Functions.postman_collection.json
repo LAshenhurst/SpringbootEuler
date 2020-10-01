@@ -196,6 +196,106 @@
 			"response": []
 		},
 		{
+			"name": "isTriangle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/functions/triangle?value=55",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"triangle"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "55"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pentagonal-number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/functions/pentagonal-number?value=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"pentagonal-number"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "isPentagonal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "390c09dc-aeba-4554-acc7-cf5797174053",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTYwMTU5NzEyNCwiaWF0IjoxNjAxNTc5MTI0fQ.lUp4PeNtvWXv_KurRslPz-Gg9OUWyMmfD7SFSIISCjfQ0uDy_R2xSlS87CoyYh_F3XvJWnLx-0tcTY-JuEH_HA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/v1/functions/pentagonal?value=145",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"pentagonal"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "145"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "divisors",
 			"request": {
 				"method": "GET",
@@ -328,6 +428,65 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "pandigital",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/functions/pandigital?value=1406357289",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"functions",
+						"pandigital"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "1406357289"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c8440ec2-58ae-469f-8ac9-36495896a171",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "481372e8-e84c-4fec-84e9-231d39f42cf0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"protocolProfileBehavior": {}

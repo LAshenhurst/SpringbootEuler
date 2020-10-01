@@ -2,8 +2,6 @@ package com.spring.euler.solutions;
 
 import org.junit.jupiter.api.Test;
 
-import java.math.BigInteger;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SolutionsTest {
@@ -12,7 +10,7 @@ public class SolutionsTest {
     @Test public void testP002() { assertEquals(4613732                   , Problem2.run()); }
     @Test public void testP003() { assertEquals(6857                      , Problem3.run()); }
     @Test public void testP004() { assertEquals(906609                    , Problem4.run()); }
-    @Test public void testP005() { assertEquals(BigInteger.valueOf(232792560)     , Problem5.run()); }
+    @Test public void testP005() { assertEquals("232792560"               , Problem5.run()); }
     @Test public void testP006() { assertEquals(25164150                  , Problem6.run()); }
     @Test public void testP007() { assertEquals(104743                    , Problem7.run()); }
     @Test public void testP008() { assertEquals(23514624000L              , Problem8.run()); }
