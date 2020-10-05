@@ -49,7 +49,7 @@ public class TokenUtils {
 
     private Boolean isTokenExpired(String token) {
         final Date expiration = getExpirationFromToken(token);
-        return expiration.before(new Date());
+        return expiration != null && expiration.before(new Date());
     }
 
     public String generateToken(UserDetails userDetails) {
