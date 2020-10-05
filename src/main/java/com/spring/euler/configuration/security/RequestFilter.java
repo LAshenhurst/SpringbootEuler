@@ -1,7 +1,11 @@
 package com.spring.euler.configuration.security;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.spring.euler.common.exception.ApiError;
+import com.spring.euler.common.exception.ApiErrorSchema;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.MalformedJwtException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,8 +20,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+@Slf4j
 @Component
 public class RequestFilter extends OncePerRequestFilter {
     private static final List<String> AUTH_WHITELIST_EXACT = List.of(
@@ -28,6 +34,8 @@ public class RequestFilter extends OncePerRequestFilter {
             "/swagger-ui.html");
 
     private static final List<String> AUTH_WHITELIST_WILDCARD = List.of("/webjars", "/swagger-resources");
+
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     @Autowired
     private JWTUserDetailsService userDetailsService;
@@ -51,18 +59,44 @@ public class RequestFilter extends OncePerRequestFilter {
         if (token != null && token.startsWith("Bearer ")) {
             jwtToken = token.substring(7);
             try { username = tokenUtils.getUsernameFromToken(jwtToken); }
-            catch (IllegalArgumentException ex) { throw new ApiError(HttpStatus.BAD_REQUEST, "Bad Authorization token."); }
-            catch (ExpiredJwtException ex) { throw new ApiError(HttpStatus.BAD_REQUEST, "Authorization token expired."); }
-        } else { throw new ApiError(HttpStatus.BAD_REQUEST, "Bad/Missing Authorization token at URI: " + request.getRequestURI()); }
+            catch (Exception ex) {
+                log.warn("Bad or expired token at URI: " + request.getRequestURI());
+                response = setErrorResponse(response, "Bad token at URI: " + request.getRequestURI());
+                return;
+            }
+        } else {
+            log.warn("Bad or missing token at URI: " + request.getRequestURI());
+            response = setErrorResponse(response, "Bad or missing token at URI: " + request.getRequestURI());
+            return;
+        }
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            if (tokenUtils.validateToken(jwtToken, userDetails)) {
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            try {
+                if (tokenUtils.validateToken(jwtToken, userDetails)) {
+                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                }
+            } catch (MalformedJwtException ex) {
+                log.warn("Malformed token at URI: " + request.getRequestURI());
+                response = setErrorResponse(response, "Malformed token at URI: " + request.getRequestURI());
+                return;
             }
+            chain.doFilter(request, response);
+        } else {
+            log.warn("Unable to determine username from token at URI: " + request.getRequestURI());
+            response = setErrorResponse(response, "Unable to determine username from token at URI: " + request.getRequestURI());
         }
-        chain.doFilter(request, response);
+    }
+
+    private HttpServletResponse setErrorResponse(HttpServletResponse response, String message) {
+        response.setStatus(401);
+
+        try (PrintWriter writer = response.getWriter()) {
+            String errorDetails = mapper.writeValueAsString(new ApiErrorSchema(HttpStatus.UNAUTHORIZED, message));
+            writer.print(errorDetails);
+        } catch (IOException ex) { return response; }
+        return response;
     }
 }

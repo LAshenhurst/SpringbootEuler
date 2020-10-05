@@ -2,6 +2,7 @@ package com.spring.euler.configuration.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -34,14 +35,16 @@ public class TokenUtils {
 
     public <T> T getClaimFromToken(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = getAllClaimsFromToken(token);
-        return claimsResolver.apply(claims);
+        return claims == null ? null : claimsResolver.apply(claims);
     }
 
     private Claims getAllClaimsFromToken(String token) {
-        return Jwts.parser()
-                .setSigningKey(secret)
-                .parseClaimsJws(token)
-                .getBody();
+        try {
+            return Jwts.parser()
+                    .setSigningKey(secret)
+                    .parseClaimsJws(token)
+                    .getBody();
+        } catch (MalformedJwtException ex) { return null; }
     }
 
     private Boolean isTokenExpired(String token) {
@@ -66,6 +69,8 @@ public class TokenUtils {
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
+        final Claims claims = getAllClaimsFromToken(token);
+        if (claims == null) { return false; }
         final String username = getUsernameFromToken(token);
         final String tokenIssuer = getIssuerFromToken(token);
         return (username.equals(userDetails.getUsername()) &&
