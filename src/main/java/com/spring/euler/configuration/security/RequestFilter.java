@@ -94,6 +94,7 @@ public class RequestFilter extends OncePerRequestFilter {
         response.setStatus(401);
 
         try (PrintWriter writer = response.getWriter()) {
+            response.setHeader("Content-Type", "application/json");
             String errorDetails = mapper.writeValueAsString(new ApiErrorSchema(HttpStatus.UNAUTHORIZED, message));
             writer.print(errorDetails);
         } catch (IOException ex) { return response; }

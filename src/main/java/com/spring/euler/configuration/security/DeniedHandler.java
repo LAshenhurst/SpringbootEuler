@@ -30,6 +30,7 @@ public class DeniedHandler implements AccessDeniedHandler {
         response.setStatus(403);
 
         try (PrintWriter writer = response.getWriter()) {
+            response.setHeader("Content-Type", "application/json");
             String errorDetails = mapper.writeValueAsString(new ApiErrorSchema(HttpStatus.FORBIDDEN, message));
             writer.print(errorDetails);
         } catch (IOException ex) { return response; }
