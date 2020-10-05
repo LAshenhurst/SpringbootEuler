@@ -8,7 +8,7 @@ import java.util.HashSet;
 
 @Slf4j
 public abstract class Problem37 {
-    public static Integer run() {
+    public static String run() {
         int result = 0;
         int count = 0;
         Set<Integer> truncateValues = new HashSet<>();
@@ -24,6 +24,6 @@ public abstract class Problem37 {
             }
             if (truncateValues.stream().allMatch(MathsHelper::isPrime)) { result += i; count++; }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

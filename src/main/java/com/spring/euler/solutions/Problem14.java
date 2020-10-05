@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import com.spring.euler.helper.MathsHelper;
 
 public abstract class Problem14 {
-    public static Long run() {
+    public static String run() {
         long result = -1L;
         int maxCollatz = -1;
         for (long i = 1L; i < 1000000; i++) {
@@ -22,6 +22,6 @@ public abstract class Problem14 {
                 maxCollatz = collatzChain;
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

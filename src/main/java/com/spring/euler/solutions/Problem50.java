@@ -5,7 +5,7 @@ import com.spring.euler.helper.MathsHelper;
 import java.util.List;
 
 public abstract class Problem50 {
-    public static Integer run() {
+    public static String run() {
         List<Integer> primes = MathsHelper.sieveOfEratosthenes(1000000);
         int result = 953; int resultTerms = 21;
         boolean done = false;
@@ -19,6 +19,6 @@ public abstract class Problem50 {
                 if (MathsHelper.isPrime(primesSum) && j > resultTerms) { result = primesSum; resultTerms = j; }
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

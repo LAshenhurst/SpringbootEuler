@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import java.util.Calendar;
 
 public abstract class Problem19 {
-    public static Integer run() {
+    public static String run() {
         int result = 0;
         Calendar date = Calendar.getInstance();
         date.set(1901, Calendar.JANUARY, 1);
@@ -13,6 +13,6 @@ public abstract class Problem19 {
             if (date.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) { result++; }
         }
 
-        return result;
+        return String.valueOf(result);
     }
 }

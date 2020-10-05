@@ -8,9 +8,9 @@ import java.io.File;
 import java.util.Arrays;
 
 public abstract class Problem42 {
-    public static long run() {
+    public static String run() {
         File file = FilesHelper.getResourceFile("static/problem42.txt");
-        return FilesHelper.readAllLines(file)
+        long result =  FilesHelper.readAllLines(file)
                 .stream()
                 .flatMap(line -> Arrays.stream(line.split(",")))
                 .map(word -> word.replace("\"", ""))
@@ -18,5 +18,7 @@ public abstract class Problem42 {
                 .map(MathsHelper::isTriangle)
                 .filter(p -> p)
                 .count();
+
+        return String.valueOf(result);
     }
 }

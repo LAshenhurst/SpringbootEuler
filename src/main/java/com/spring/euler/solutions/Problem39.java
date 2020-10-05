@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public abstract class Problem39 {
-    public static Integer run() {
+    public static String run() {
         int result = 0;
         int maxSolutions = 0;
         for (int p = 120; p <= 1000; p += 2) {
@@ -20,6 +20,6 @@ public abstract class Problem39 {
                 maxSolutions = solutions;
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

@@ -3,9 +3,9 @@ package com.spring.euler.solutions;
 import com.spring.euler.helper.MathsHelper;
 
 public abstract class Problem7 {
-    public static Integer run() {
+    public static String run() {
         int prime = 2;
         for (int count = 1; count < 10001; count++) { prime = MathsHelper.findNextPrime(prime); }
-        return prime;
+        return String.valueOf(prime);
     }
 }

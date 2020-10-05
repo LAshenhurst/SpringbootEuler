@@ -12,10 +12,10 @@ import java.util.concurrent.*;
 public abstract class TimerHelper {
     private static final ExecutorService executor = Executors.newCachedThreadPool();
 
-    public static <T> TimedSolution run(Callable<T> method, Boolean timeout) { return processMethod(executor.submit(method), timeout); }
+    public static TimedSolution run(Callable<Object> method, Boolean timeout) { return processMethod(executor.submit(method), timeout); }
 
-    private static <T> TimedSolution processMethod(Future<T> future, Boolean timeout) {
-        T answer;
+    private static TimedSolution processMethod(Future<Object> future, Boolean timeout) {
+        Object answer;
         String computeTime;
 
         try {

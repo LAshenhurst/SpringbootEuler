@@ -16,4 +16,8 @@ public abstract class BigIntegerHelper {
         for (long i = 2; i <= n; i++) { result = result.multiply(BigInteger.valueOf(i)); }
         return result;
     }
+
+    public static BigInteger binomial(int n, int k) {
+        return factorial(n).divide((factorial(k).multiply(factorial(n - k))));
+    }
 }

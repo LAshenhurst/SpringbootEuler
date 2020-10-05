@@ -1,7 +1,7 @@
 package com.spring.euler.solutions;
 
 public abstract class Problem2 {
-    public static Integer run() {
+    public static String run() {
         int firstFib = 1;
         int secondFib = 2;
         int storage;
@@ -12,6 +12,6 @@ public abstract class Problem2 {
             firstFib = secondFib;
             secondFib += storage;
         }
-        return result;
+        return String.valueOf(result);
     }
 }

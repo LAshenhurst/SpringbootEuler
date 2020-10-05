@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.concurrent.Callable;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -40,7 +42,7 @@ public class FunctionsServiceImpl implements FunctionsService {
 
     public Mono<TimedSolution> isAbundant(Integer value) { return Mono.just(TimerHelper.run(() -> MathsHelper.isAbundant(value), true)); }
 
-    public Mono<TimedSolution> binomialExpansion(Integer n, Integer k) { return Mono.just(TimerHelper.run(() -> MathsHelper.binomial(n, k), true)); }
+    public Mono<TimedSolution> binomialExpansion(Integer n, Integer k) { return Mono.just(TimerHelper.run(() -> BigIntegerHelper.binomial(n, k), true)); }
 
     public Mono<TimedSolution> factorial(Integer value) { return Mono.just(TimerHelper.run(() -> BigIntegerHelper.factorial(value), true)); }
 

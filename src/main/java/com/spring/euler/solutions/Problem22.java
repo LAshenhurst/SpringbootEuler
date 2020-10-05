@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class Problem22 {
-    public static Integer run() {
+    public static String run() {
         File file = FilesHelper.getResourceFile("static/problem22.txt");
         List<String> names = FilesHelper.readAllLines(file)
                 .stream()
@@ -19,7 +19,7 @@ public abstract class Problem22 {
                 .sorted()
                 .collect(Collectors.toList());
 
-        return names.stream()
+        int result = names.stream()
                 .map(name -> {
                     int nameScore = 0;
                     String[] nameChars = name.split("");
@@ -28,5 +28,7 @@ public abstract class Problem22 {
                     return nameScore;
                 })
                 .reduce(0, Integer::sum);
+
+        return String.valueOf(result);
     }
 }

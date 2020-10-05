@@ -3,13 +3,13 @@ package com.spring.euler.solutions;
 import com.spring.euler.helper.MathsHelper;
 
 public abstract class Problem26 {
-    public static Integer run() {
+    public static String run() {
         int result = 0;
         int maxRecurring = 0;
         for (int i = 2; i < 1000; i++) {
             int reciprocal = MathsHelper.recurringCycle(i);
             if (reciprocal > maxRecurring) { result = i; maxRecurring = reciprocal; }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

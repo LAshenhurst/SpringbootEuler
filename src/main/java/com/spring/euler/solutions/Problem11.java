@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.List;
 
 public abstract class Problem11 {
-    public static Integer run() {
+    public static String run() {
         File file = FilesHelper.getResourceFile("static/problem11.txt");
         Integer[][] square = FilesHelper.readAllLines(file)
                 .stream()
@@ -28,7 +28,7 @@ public abstract class Problem11 {
                 result = Math.max(product(square, x, y, -1, 1, 4), result);
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 
     private static int product(Integer[][] square, int x, int y, int dx, int dy, int n) {

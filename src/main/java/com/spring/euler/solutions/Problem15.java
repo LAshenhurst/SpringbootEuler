@@ -1,9 +1,7 @@
 package com.spring.euler.solutions;
 
-import com.spring.euler.helper.MathsHelper;
+import com.spring.euler.helper.BigIntegerHelper;
 
 public abstract class Problem15 {
-    public static Long run() {
-        return MathsHelper.binomial(40, 20);
-    }
+    public static String run() { return BigIntegerHelper.binomial(40, 20).toString(); }
 }

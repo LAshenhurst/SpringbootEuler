@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import com.spring.euler.helper.MathsHelper;
 
 public abstract class Problem33 {
-    public static Integer run() {
+    public static String run() {
         int resultNumerator = 1;
         int resultDenominator = 1;
         for (int i = 10; i <= 100; i++) {
@@ -16,6 +16,7 @@ public abstract class Problem33 {
                 }
             }
         }
-        return resultDenominator / MathsHelper.greatestCommonDivisor(resultNumerator, resultDenominator);
+        int result = resultDenominator / MathsHelper.greatestCommonDivisor(resultNumerator, resultDenominator);
+        return String.valueOf(result);
     }
 }

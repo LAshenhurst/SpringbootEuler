@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import com.spring.euler.helper.MathsHelper;
 
 public abstract class Problem27 {
-    public static Integer run() {
+    public static String run() {
         int result = 0;
         int maxN = 0;
         for (int a = -1000; a < 1000; a++) {
@@ -18,6 +18,6 @@ public abstract class Problem27 {
                 if (n > maxN) { maxN = n; result = a * b; }
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

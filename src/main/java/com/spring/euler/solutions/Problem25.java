@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import java.math.BigInteger;
 
 public abstract class Problem25 {
-    public static Integer run() {
+    public static String run() {
         BigInteger x = BigInteger.ONE;
         BigInteger y = BigInteger.ONE;
         BigInteger storage;
@@ -14,6 +14,6 @@ public abstract class Problem25 {
             x = storage;
             index++;
         }
-        return index;
+        return String.valueOf(index);
     }
 }

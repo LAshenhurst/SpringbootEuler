@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Problem21 {
-    public static Integer run() {
+    public static String run() {
         List<Integer> amicableNumbers = new ArrayList<>();
         for (int i = 1; i < 10000; i++) {
             if (amicableNumbers.contains(i)) { continue; }
@@ -14,6 +14,6 @@ public abstract class Problem21 {
             int jDivisors = MathsHelper.findDivisors(iDivisors).stream().reduce(0, Integer::sum) - iDivisors;
             if (i != iDivisors && i == jDivisors) { amicableNumbers.addAll(List.of(i, iDivisors)); }
         }
-        return amicableNumbers.stream().reduce(0, Integer::sum);
+        return String.valueOf(amicableNumbers.stream().reduce(0, Integer::sum));
     }
 }

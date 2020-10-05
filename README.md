@@ -10,6 +10,5 @@ Project Euler solution in Java, wrapped in a Spring boot API server
 
 ## TODOs
 
-1. Cache
-2. Resolve incorrect solutions (found in SolutionsTest)
-3. Add more solutions!
+1. Cache solutions
+2. Add more solutions!

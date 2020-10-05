@@ -62,14 +62,14 @@ public abstract class MathsHelper {
     }
 
     public static List<Integer> findDivisors(int n) {
-        List<Integer> result = new ArrayList<>();
+        Set<Integer> result = new HashSet<>();
         for (int i = 1; i * i <= n; i++) {
             if (n % i == 0) {
                 result.add(i);
                 result.add(n / i);
             }
         }
-        return result;
+        return new ArrayList<>(result);
     }
 
     public static List<Integer> primeFactors(int n) {
@@ -86,9 +86,7 @@ public abstract class MathsHelper {
         return results;
     }
 
-    public static Boolean isAbundant(int n) {
-        return (findDivisors(n).stream().reduce(0, Integer::sum) - n) > n;
-    }
+    public static Boolean isAbundant(int n) { return (findDivisors(n).stream().reduce(0, Integer::sum) - n) > n; }
 
     public static Long collatz(Long n) {
         return n % 2 == 0 ? n / 2 : ((3 * n) + 1);
@@ -100,14 +98,6 @@ public abstract class MathsHelper {
 
     public static Boolean isInteger (Double n) {
         return n == Math.floor(n) && !Double.isInfinite(n);
-    }
-
-    public static Long binomial(int n, int k)
-    {
-        if (k > n - k) { k = n - k; }
-        long result = 1;
-        for (int i = 1, m = n; i <= k; i++, m--) { result *= m / i; }
-        return result;
     }
 
     public static Integer recurringCycle(int denominator) {

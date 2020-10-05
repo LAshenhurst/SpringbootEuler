@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import java.util.Arrays;
 
 public abstract class Problem30 {
-    public static Integer run() {
+    public static String run() {
         int result = 0;
         for (int i = 2; i < 1000000; i++) {
             Double sum = Arrays.stream(String.valueOf(i).split(""))
@@ -12,6 +12,6 @@ public abstract class Problem30 {
                     .reduce(0.0, Double::sum);
             if (sum == i) { result += i; }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

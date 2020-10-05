@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public abstract class Problem18 {
-    public static Integer run() {
+    public static String run() {
         File file = FilesHelper.getResourceFile("static/problem18.txt");
         List<List<Integer>> numbers = FilesHelper.readAllLines(file)
                 .stream()
@@ -25,6 +25,6 @@ public abstract class Problem18 {
                 numbers.get(i).set(j, maxPath);
             }
         }
-        return numbers.get(0).get(0);
+        return String.valueOf(numbers.get(0).get(0));
     }
 }

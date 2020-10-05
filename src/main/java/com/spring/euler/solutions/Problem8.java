@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.List;
 
 public abstract class Problem8 {
-    public static Long run() {
+    public static String run() {
         File file = FilesHelper.getResourceFile("static/problem8.txt");
         String number = String.join("", FilesHelper.readAllLines(file));
         Long result = 0L;
@@ -17,6 +17,6 @@ public abstract class Problem8 {
                     .reduce(1L, (a, b) -> a * b);
             if (product > result) { result = product; }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 @Slf4j
 public abstract class Problem38 {
-    public static Integer run() {
+    public static String run() {
         int result = 0;
         for (int i = 9999; i > 1; i--) {
             for (int j = 2; ; j++) {
@@ -18,6 +18,6 @@ public abstract class Problem38 {
                 if (MathsHelper.isPandigital(Long.parseLong(concat))) { result = Math.max(result, Integer.parseInt(concat)); }
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 }

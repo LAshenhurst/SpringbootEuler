@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import com.spring.euler.helper.MathsHelper;
 
 public abstract class Problem44 {
-    public static Integer run() {
+    public static String run() {
         int k; int j;
         int result = -1;
         for (int i = 1; result == -1; i++) {
@@ -14,6 +14,6 @@ public abstract class Problem44 {
                 if (MathsHelper.isPentagonal(k + j) && MathsHelper.isPentagonal(k - j)) { result = k - j; }
             }
         }
-        return result;
+        return String.valueOf(result);
     }
 }
