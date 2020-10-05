@@ -31,7 +31,7 @@ public class ProblemsController {
                 ));
     }
 
-    @GetMapping("/all")
+    @GetMapping
     @ApiOperation(value = "Returns the problem descriptions for all Project Euler problems that have been solved.")
     public Mono<Response> getProblems() {
         return problemsService.readProblems()
