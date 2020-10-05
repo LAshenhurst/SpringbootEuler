@@ -51,12 +51,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-    httpSecurity
+        httpSecurity
             .csrf().disable()
             .addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .antMatchers("/v1/answers").hasAnyAuthority("ADMIN")
+                .antMatchers("/v1/answers/test").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
             .and()
             .exceptionHandling()
