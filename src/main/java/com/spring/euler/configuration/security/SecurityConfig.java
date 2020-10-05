@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -45,6 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception { return super.authenticationManagerBean(); }
 
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler() { return new DeniedHandler(); }
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity
@@ -52,9 +56,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
+                .antMatchers("/v1/answers").hasAnyAuthority("ADMIN")
                 .anyRequest().authenticated()
             .and()
-            .exceptionHandling().authenticationEntryPoint(entryPoint)
+            .exceptionHandling()
+                .authenticationEntryPoint(entryPoint)
+                .accessDeniedHandler(accessDeniedHandler())
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
