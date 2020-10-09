@@ -10,9 +10,11 @@ import java.util.concurrent.*;
 
 @Slf4j
 public abstract class TimerHelper {
-    private static final ExecutorService executor = Executors.newCachedThreadPool();
+    private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
 
-    public static TimedSolution run(Callable<Object> method, Boolean timeout) { return processMethod(executor.submit(method), timeout); }
+    public static TimedSolution run(Callable<Object> method) { return processMethod(EXECUTOR.submit(method), true); }
+
+    public static TimedSolution runUntilComplete(Callable<Object> method) { return processMethod(EXECUTOR.submit(method), false); }
 
     private static TimedSolution processMethod(Future<Object> future, Boolean timeout) {
         Object answer;

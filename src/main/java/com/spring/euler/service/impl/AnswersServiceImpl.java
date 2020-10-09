@@ -29,14 +29,8 @@ public class AnswersServiceImpl implements AnswersService {
         return Mono.justOrEmpty(index)
                 .switchIfEmpty(Mono.error(new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
                 .map(SolutionsHelper::getSolution)
-                .flatMap(timedSolution -> problemsService.readProblem(index)
-                                            .map(problem -> ResponseMapper.generate(
-                                                    problem,
-                                                    timedSolution.getAnswer(),
-                                                    String.valueOf(index),
-                                                    true,
-                                                    timedSolution.getComputeTime()
-                                            ))
+                .flatMap(timedSolution -> problemsService.readProblem(index).map(problem ->
+                        ResponseMapper.generate(problem, timedSolution.getAnswer(), String.valueOf(index), true, timedSolution.getComputeTime()))
                 )
                 .doOnSubscribe(sub -> log.info("Calculate the solution to problem {}", index));
     }
@@ -65,7 +59,7 @@ public class AnswersServiceImpl implements AnswersService {
     }
 
     public Mono<Response> testMethod() {
-        return Mono.just(TimerHelper.run(Problem50::run, false))
+        return Mono.just(TimerHelper.runUntilComplete(Problem50::run))
                 .map(timedSolution ->
                         ResponseMapper.generate(
                                 "Test Method",
