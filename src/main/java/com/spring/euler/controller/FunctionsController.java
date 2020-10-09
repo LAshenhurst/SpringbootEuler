@@ -171,6 +171,6 @@ public class FunctionsController {
     }
 
     private Response createResponse(String task, TimedSolution timedSolution, String notes) {
-        return ResponseMapper.generate(task, timedSolution.getAnswer(), notes, false, timedSolution.getComputeTime());
+        return ResponseMapper.toResponse(task, timedSolution.getAnswer(), notes, false, timedSolution.getComputeTime());
     }
 }

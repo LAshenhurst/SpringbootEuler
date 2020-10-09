@@ -22,7 +22,7 @@ public class ProblemsController {
     @ApiOperation(value = "Returns the problem description for a Project Euler problem, only solved problems will appear.")
     public Mono<Response> getProblem(@Valid @PathVariable Integer index) {
         return problemsService.readProblem(index)
-                .map(problem -> ResponseMapper.generate(
+                .map(problem -> ResponseMapper.toResponse(
                         "Return the description for problem " + index,
                         problem,
                         null,
@@ -36,7 +36,7 @@ public class ProblemsController {
     public Mono<Response> getProblems() {
         return problemsService.readProblems()
                 .collectList()
-                .map(problemsList -> ResponseMapper.generate(
+                .map(problemsList -> ResponseMapper.toResponse(
                         "Return the descriptions for all solved problems",
                         problemsList,
                         null,

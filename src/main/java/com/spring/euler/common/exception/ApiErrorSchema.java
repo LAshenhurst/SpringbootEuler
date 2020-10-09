@@ -8,29 +8,19 @@ import java.util.Date;
 
 @Data
 public class ApiErrorSchema {
+    private final static SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
     private HttpStatus status;
     private String timestamp;
     private Object message;
 
     private ApiErrorSchema() {
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        timestamp = format.format(new Date());
-    }
-
-    public ApiErrorSchema(HttpStatus status) {
-        this();
-        this.status = status;
+        timestamp = DATETIME_FORMAT.format(new Date());
     }
 
     public ApiErrorSchema(HttpStatus status, Object message) {
         this();
         this.status = status;
         this.message = message;
-    }
-
-    public ApiErrorSchema(HttpStatus status, Throwable ex) {
-        this();
-        this.status = status;
-        this.message = ex.getMessage();
     }
 }

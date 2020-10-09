@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 
 @Slf4j
 public class DeniedHandler implements AccessDeniedHandler {
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException deniedEx) {
@@ -31,7 +31,7 @@ public class DeniedHandler implements AccessDeniedHandler {
 
         try (PrintWriter writer = response.getWriter()) {
             response.setHeader("Content-Type", "application/json");
-            String errorDetails = mapper.writeValueAsString(new ApiErrorSchema(HttpStatus.FORBIDDEN, message));
+            String errorDetails = OBJECT_MAPPER.writeValueAsString(new ApiErrorSchema(HttpStatus.FORBIDDEN, message));
             writer.print(errorDetails);
         } catch (IOException ex) { return response; }
         return response;

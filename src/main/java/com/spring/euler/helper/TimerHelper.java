@@ -2,6 +2,7 @@ package com.spring.euler.helper;
 
 import com.spring.euler.common.exception.ApiError;
 import com.spring.euler.domain.TimedSolution;
+import com.spring.euler.domain.mappers.TimedSolutionMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StopWatch;
@@ -34,10 +35,7 @@ public abstract class TimerHelper {
             else { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()); }
         }
 
-        return TimedSolution.builder()
-                .answer(answer)
-                .computeTime(computeTime)
-                .build();
+        return TimedSolutionMapper.toTimedSolution(answer, computeTime);
     }
 
     private static String formatComputeTime(Long computeTime) {

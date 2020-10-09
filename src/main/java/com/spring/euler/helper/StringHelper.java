@@ -56,8 +56,9 @@ public abstract class StringHelper {
     }
 
     public static Integer alphabeticalValue(String text) {
-        return Arrays.stream(text.split(" "))
-                .flatMap(word -> Arrays.stream(text.split("")).map(Alphabet::getIndex))
+        final String cleanText = text.replaceAll("[^a-zA-Z]", "");
+        return Arrays.stream(cleanText.split(""))
+                .map(Alphabet::getIndex)
                 .reduce(0, Integer::sum);
     }
 }

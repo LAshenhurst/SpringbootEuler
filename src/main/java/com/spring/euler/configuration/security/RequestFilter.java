@@ -1,9 +1,7 @@
 package com.spring.euler.configuration.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spring.euler.common.exception.ApiError;
 import com.spring.euler.common.exception.ApiErrorSchema;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ public class RequestFilter extends OncePerRequestFilter {
 
     private static final List<String> AUTH_WHITELIST_WILDCARD = List.of("/webjars", "/swagger-resources");
 
-    private static final ObjectMapper mapper = new ObjectMapper();
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Autowired
     private JWTUserDetailsService userDetailsService;
@@ -95,7 +93,7 @@ public class RequestFilter extends OncePerRequestFilter {
 
         try (PrintWriter writer = response.getWriter()) {
             response.setHeader("Content-Type", "application/json");
-            String errorDetails = mapper.writeValueAsString(new ApiErrorSchema(HttpStatus.UNAUTHORIZED, message));
+            String errorDetails = OBJECT_MAPPER.writeValueAsString(new ApiErrorSchema(HttpStatus.UNAUTHORIZED, message));
             writer.print(errorDetails);
         } catch (IOException ex) { return response; }
         return response;
