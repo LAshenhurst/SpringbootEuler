@@ -6,6 +6,19 @@ import java.util.*;
 
 @Slf4j
 public abstract class MathsHelper {
+    public static Integer parseDigits(List<Integer> digits) {
+        StringBuilder result = new StringBuilder();
+        for (int digit: digits) { result.append(digit); }
+        return Integer.parseInt(new String(result));
+    }
+
+    public static List<Integer> toDigits(Integer value) {
+        List<Integer> digits = new ArrayList<>();
+        do { digits.add(value % 10); value /= 10; } while (value > 0);
+        Collections.reverse(digits);
+        return digits;
+    }
+
     public static boolean isPrime(long n) {
         if (n < 2) { return false; }
         for (long i = 2; i * i <= n; i++) {

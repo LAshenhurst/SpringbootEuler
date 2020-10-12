@@ -59,7 +59,7 @@ public class AnswersServiceImpl implements AnswersService {
     }
 
     public Mono<Response> testMethod() {
-        return Mono.just(TimerHelper.runUntilComplete(Problem50::run))
+        return Mono.just(TimerHelper.runUntilComplete(Problem51::run))
                 .map(timedSolution ->
                         ResponseMapper.toResponse("Test Method", timedSolution.getAnswer(), null, false, timedSolution.getComputeTime())
                 );

@@ -48,3 +48,4 @@
 48. Find the last ten digits of 1^1 + 2^2 + 3^3 ... + 1000^1000
 49. Find the concatenation of the second sequence (not 1487) of three 4-digit numbers where the term increases by 3330, and all are prime
 50. Find the prime, below 1 million, that can be written as the sum of the most consecutive primes
+51. Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits) with the same digit, is part of an eight prime value family

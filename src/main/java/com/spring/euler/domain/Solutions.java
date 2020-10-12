@@ -52,7 +52,8 @@ public enum Solutions {
     FORTY_SEVEN                          { @Override public String run() { return Problem47.run(); } },
     FORTY_EIGHT                          { @Override public String run() { return Problem48.run(); } },
     FORTY_NINE                           { @Override public String run() { return Problem49.run(); } },
-    FIFTY                                { @Override public String run() { return Problem50.run(); } };
+    FIFTY                                { @Override public String run() { return Problem50.run(); } },
+    FIFTY_ONE                            { @Override public String run() { return Problem51.run(); } };
 
     public abstract String run();
 }
