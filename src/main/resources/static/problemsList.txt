@@ -49,3 +49,6 @@
 49. Find the concatenation of the second sequence (not 1487) of three 4-digit numbers where the term increases by 3330, and all are prime
 50. Find the prime, below 1 million, that can be written as the sum of the most consecutive primes
 51. Find the smallest prime which, by replacing part of the number (not necessarily adjacent digits) with the same digit, is part of an eight prime value family
+52. Find the smallest positive integer such that x, 2x, 3x, 4x, 5x, and 6x all contain the same digits
+53. Find the number of binomial combinations (nCr), where 1 <= n <= 100, greater than 1,000,000
+54. Find the number of wins for Player One in 1000 pairs of poker hands

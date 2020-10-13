@@ -56,4 +56,8 @@ public class SolutionsTest {
     @Test public void testProblem48() { assertEquals("9110846700"              , Problem48.run()); }
     @Test public void testProblem49() { assertEquals("296962999629"            , Problem49.run()); }
     @Test public void testProblem50() { assertEquals("997651"                  , Problem50.run()); }
+    @Test public void testProblem51() { assertEquals("121313"                  , Problem51.run()); }
+    @Test public void testProblem52() { assertEquals("142857"                  , Problem52.run()); }
+    @Test public void testProblem53() { assertEquals("4075"                    , Problem53.run()); }
+    @Test public void testProblem54() { assertEquals("376"                     , Problem54.run()); }
 }
