@@ -60,4 +60,9 @@ public class SolutionsTest {
     @Test public void testProblem52() { assertEquals("142857"                  , Problem52.run()); }
     @Test public void testProblem53() { assertEquals("4075"                    , Problem53.run()); }
     @Test public void testProblem54() { assertEquals("376"                     , Problem54.run()); }
+    @Test public void testProblem55() { assertEquals("249"                     , Problem55.run()); }
+    @Test public void testProblem56() { assertEquals("972"                     , Problem56.run()); }
+    @Test public void testProblem57() { assertEquals("153"                     , Problem57.run()); }
+    @Test public void testProblem58() { assertEquals("26241"                   , Problem58.run()); }
+    @Test public void testProblem59() { assertEquals("129448"                  , Problem59.run()); }
 }

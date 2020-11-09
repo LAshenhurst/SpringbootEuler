@@ -1,6 +1,6 @@
 package com.spring.euler.service.impl;
 
-import com.spring.euler.common.exception.ApiError;
+import com.spring.euler.common.exception.ApiException;
 import com.spring.euler.domain.Response;
 import com.spring.euler.domain.Solutions;
 import com.spring.euler.domain.mappers.ResponseMapper;
@@ -27,7 +27,7 @@ public class AnswersServiceImpl implements AnswersService {
 
     public Mono<Response> getAnswer(Integer index) {
         return Mono.justOrEmpty(index)
-                .switchIfEmpty(Mono.error(new ApiError(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
+                .switchIfEmpty(Mono.error(new ApiException(HttpStatus.BAD_REQUEST, "Problem number must be provided.")))
                 .map(SolutionsHelper::getSolution)
                 .flatMap(timedSolution -> problemsService.readProblem(index).map(problem ->
                         ResponseMapper.toResponse(problem, timedSolution.getAnswer(), String.valueOf(index), true, timedSolution.getComputeTime()))
@@ -39,11 +39,11 @@ public class AnswersServiceImpl implements AnswersService {
         if (min == null && max == null) { min = 1; max = Solutions.values().length; }
         else if (min == null || min <= 0 || min > Solutions.values().length) {
             String errorMessage = "Minimum value for the range must be greater than zero and less than " + Solutions.values().length + ".";
-            throw new ApiError(HttpStatus.BAD_REQUEST, errorMessage);
+            throw new ApiException(HttpStatus.BAD_REQUEST, errorMessage);
         }
         else if (max == null || max < min || max > Solutions.values().length) {
             String errorMessage = "Maximum value for the range must be greater than " + min + " and less than " + Solutions.values().length;
-            throw new ApiError(HttpStatus.BAD_REQUEST, errorMessage);
+            throw new ApiException(HttpStatus.BAD_REQUEST, errorMessage);
         }
 
         String task = "Calculate the solutions to problems " + min + " - " + max;

@@ -1,7 +1,7 @@
 package com.spring.euler.configuration.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spring.euler.common.exception.ApiErrorSchema;
+import com.spring.euler.common.exception.ApiExceptionSchema;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.AccessDeniedException;
@@ -21,7 +21,7 @@ public class DeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException deniedEx) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        log.warn(auth.getName() + " attempted to access URI: " + request.getRequestURI());
+        log.info(auth.getName() + " attempted to access URI: " + request.getRequestURI());
         response = configureDeniedResponse(response);
     }
 
@@ -31,7 +31,7 @@ public class DeniedHandler implements AccessDeniedHandler {
 
         try (PrintWriter writer = response.getWriter()) {
             response.setHeader("Content-Type", "application/json");
-            String errorDetails = OBJECT_MAPPER.writeValueAsString(new ApiErrorSchema(HttpStatus.FORBIDDEN, message));
+            String errorDetails = OBJECT_MAPPER.writeValueAsString(new ApiExceptionSchema(HttpStatus.FORBIDDEN, message));
             writer.print(errorDetails);
         } catch (IOException ex) { return response; }
         return response;

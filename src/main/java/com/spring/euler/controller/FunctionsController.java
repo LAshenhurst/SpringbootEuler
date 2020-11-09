@@ -19,6 +19,14 @@ import javax.validation.Valid;
 public class FunctionsController {
     private final FunctionsService functionsService;
 
+    @GetMapping("/lychrel")
+    @ApiOperation(value = "Determine whether a provided integer is a Lychrel number.")
+    public Mono<Response> lychrel(@Valid @RequestParam Integer value) {
+        String task = "Determine whether a provided integer is a Lychrel number.";
+        String notes = "A Lychrel number is one where repeatedly adding the number and its reverse never forms a palindrome.";
+        return functionsService.isLychrel(value).map(timedSolution -> createResponse(task, timedSolution, notes));
+    }
+
     @GetMapping("/alphabetical-value")
     @ApiOperation(value = "Find the sum of the alphabetical value of the characters in a given string")
     public Mono<Response> alphabeticalValue(@Valid @RequestParam String text) {

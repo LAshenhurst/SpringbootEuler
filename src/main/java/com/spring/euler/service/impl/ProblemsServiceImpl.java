@@ -1,6 +1,6 @@
 package com.spring.euler.service.impl;
 
-import com.spring.euler.common.exception.ApiError;
+import com.spring.euler.common.exception.ApiException;
 import com.spring.euler.helper.FilesHelper;
 import com.spring.euler.service.ProblemsService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +23,7 @@ public class ProblemsServiceImpl implements ProblemsService {
     public Mono<String> readProblem(Integer index) {
         if (index <= 0 || index > problems.size()) {
             String errorMessage = "Problem " + index + " not found. Problems 1 - " + problems.size() + " are solved.";
-            throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
+            throw new ApiException(HttpStatus.NOT_FOUND, errorMessage);
         }
 
         return Mono.just(problems.get(index - 1));

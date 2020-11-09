@@ -1,15 +1,13 @@
 package com.spring.euler.helper;
 
-import com.spring.euler.common.exception.ApiError;
+import com.spring.euler.common.exception.ApiException;
 import com.spring.euler.domain.TimedSolution;
 import com.spring.euler.domain.mappers.TimedSolutionMapper;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.StopWatch;
 
 import java.util.concurrent.*;
 
-@Slf4j
 public abstract class TimerHelper {
     private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
 
@@ -29,10 +27,10 @@ public abstract class TimerHelper {
             computeTime = formatComputeTime(watch.getTotalTimeMillis());
         } catch (TimeoutException ex) {
             future.cancel(true);
-            throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Solution method timed out.");
+            throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "Solution method timed out.");
         } catch (InterruptedException | ExecutionException ex) {
-            if (ex.getCause() instanceof ApiError) { throw new ApiError(((ApiError) ex.getCause()).getStatus(), ex.getCause().getMessage()); }
-            else { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()); }
+            if (ex.getCause() instanceof ApiException) { throw new ApiException(((ApiException) ex.getCause()).getStatus(), ex.getCause().getMessage()); }
+            else { throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage()); }
         }
 
         return TimedSolutionMapper.toTimedSolution(answer, computeTime);

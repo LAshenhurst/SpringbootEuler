@@ -1,7 +1,6 @@
 package com.spring.euler.helper;
 
-import com.spring.euler.common.exception.ApiError;
-import lombok.extern.slf4j.Slf4j;
+import com.spring.euler.common.exception.ApiException;
 import org.springframework.http.HttpStatus;
 
 import java.io.File;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-@Slf4j
 public abstract class FilesHelper {
     public static File getResourceFile(String path) {
         String filePath = ClassLoader.getSystemResource(path).getFile();
@@ -21,7 +19,7 @@ public abstract class FilesHelper {
         if (file.exists()) { return file; }
         else {
             String errorMessage = "File not found at: " + path;
-            throw new ApiError(HttpStatus.NOT_FOUND, errorMessage);
+            throw new ApiException(HttpStatus.NOT_FOUND, errorMessage);
         }
     }
 
@@ -32,6 +30,6 @@ public abstract class FilesHelper {
 
     public static List<String> readAllLines(File file) {
         try { return Files.readAllLines(file.toPath()); }
-        catch (IOException e) { throw new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to read from file"); }
+        catch (IOException e) { throw new ApiException(HttpStatus.INTERNAL_SERVER_ERROR, "Unable to read from file"); }
     }
 }

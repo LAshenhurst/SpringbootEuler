@@ -1,7 +1,6 @@
 package com.spring.euler.helper;
 
 import com.spring.euler.domain.Alphabet;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -10,11 +9,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Slf4j
 public abstract class StringHelper {
     public static boolean isPalindrome(String val) {
         return new StringBuilder(val).reverse().toString().equals(val);
     }
+
+    public static String reverse(String val) { return String.valueOf(new StringBuilder(val).reverse()); }
 
     public static List<String> permutations(String permuteObject) {
         List<String> chars = permuteObject.chars().mapToObj(e -> String.valueOf((char) e)).collect(Collectors.toList());

@@ -1,38 +1,38 @@
-1. Sum of the multiples of 3 and 5 below 1000
-2. Sum of all even fibonacci numbers under 4,000,000
-3. Largest prime factor of 600851475143
-4. Largest palindromic number that's a product of two three digit numbers
-5. Smallest positive number evenly divisible by all numbers 1 - 20
-6. Sum of square of first 100 natural numbers minus square of sum.
+1. Find the sum of the multiples of 3 and 5 below 1000
+2. Find the sum of all even fibonacci numbers under 4,000,000
+3. Find the largest prime factor of 600851475143
+4. Find the largest palindromic number that's a product of two three digit numbers
+5. Find the smallest positive number evenly divisible by all numbers 1 - 20
+6. Find the sum of square of first 100 natural numbers minus square of sum.
 7. Find the 10,001st prime number
-8. Largest product of 13 consecutive numbers in a given 1000-digit number
-9. Pythagorean triplet such that a + b + c = 1000
-10. Sum of all primes below 2,000,000
-11. Which four adjacent numbers in a 20x20 grid have the highest product?
-12. The first Triangle number with over 500 factors
+8. Find the largest product of 13 consecutive numbers in a given 1000-digit number
+9. Find the Pythagorean triplet such that a + b + c = 1000
+10. Find the sum of all primes below 2,000,000
+11. Find the four adjacent numbers in a 20x20 grid with the largest product
+12. Find the first Triangle number with over 500 factors
 13. Find the first ten digits of the sum of a given list of one hundred 50-digit numbers
-14. Number under 1,000,000 that produces the longest Collatz sequence
-15. Number of routes from the top left of a 20x20 square to the bottom right
-16. Sum of the digits making up 2^1000
-17. Sum of the letters used to write out all numbers from 1 to 1000
+14. Find the number under 1,000,000 that produces the longest Collatz sequence
+15. Find the number of routes from the top left of a 20x20 square to the bottom right
+16. Find the sum of the digits making up 2^1000
+17. Find the sum of the letters used to write out all numbers from 1 to 1000
 18. Find the maximum sum of a path down a given triangle.
-19. How many Sundays lie at the start of the month during the 20th century?
+19. Find the number of Sundays at the start of the month during the 20th century?
 20. Find the sum of the digits in 100!
 21. Find the sum of all amicable pairs under 10,000
-22. Apply a set of operations to a given list of 5000+ names.
-23. Sum of all positive integers that cannot be written as the sum of two abundant numbers
+22. Find the sum of the score of each name in a given list by ordering the list alphabetically and converting each name to its letter value
+23. Find the sum of all positive integers that cannot be written as the sum of two abundant numbers
 24. Find the millionth entry in the lexicographic permutation of 0,1,2,3,4,5,6,7,8,9
-25. Which Fibonacci number is the first to contain 1000 digits
+25. Find the Fibonacci number is the first to contain 1000 digits
 26. Find the value of d (d < 1000) where 1/d contains longest recurring cycle.
-27. Find f(a,b) =  n^2 + a * n + b that produces that largest number of consecutive primes.
+27. Find the f(a,b) =  n^2 + a * n + b that produces that largest number of consecutive primes.
 28. Find the sum of the diagonal entries on a 1001 by 1001 clockwise spiral
-29. How many distinct terms in a^b for all a and b in [2, 100]
+29. Find the number of distinct terms in a^b for all a and b in [2, 100]
 30. Find all numbers that can be written as the sum of the fifth power of their digits
 31. Find all possible methods of creating £2 with any number of coins
 32. Find the sum of all z such that x * y = z uses all digits 1 - 9
 33. Find the denominator of the product of all fractions that can be non-trivially simplified
 34. Find all numbers that are equal to the sum of the factorial of their digits
-35. How many circular primes are there below 1,000,000
+35. Find the number of circular primes below 1,000,000
 36. Find the sum of all numbers under 1,000,000 that are palindromic in base 2 and 10
 37. Find the sum of all truncatable prime numbers
 38. Find the largest 1 to 9 pandigital number that can be formed as the concatenated product of an integer with (1, 2, ..., n)
@@ -52,3 +52,8 @@
 52. Find the smallest positive integer such that x, 2x, 3x, 4x, 5x, and 6x all contain the same digits
 53. Find the number of binomial combinations (nCr), where 1 <= n <= 100, greater than 1,000,000
 54. Find the number of wins for Player One in 1000 pairs of poker hands
+55. Find the amount of Lychrel numbers under 10,000
+56. Find the number with the largest digit sum from a ^ b where a, b < 100
+57. Find the number of fractions in the first 1000 expansions of the infinite fraction representing the square root of 2 that have a numerator with more digits than denominator
+58. Find the side length of the square spiral for which the ratio of primes along both diagonals first falls below 10%
+59. Use XOR encryption to decrypt a given message by finding the three character key

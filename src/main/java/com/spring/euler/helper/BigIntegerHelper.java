@@ -1,10 +1,7 @@
 package com.spring.euler.helper;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.math.BigInteger;
 
-@Slf4j
 public abstract class BigIntegerHelper {
 
     public static BigInteger lowestCommonMultiple(BigInteger x, BigInteger y) {

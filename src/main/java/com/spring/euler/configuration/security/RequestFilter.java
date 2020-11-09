@@ -1,7 +1,7 @@
 package com.spring.euler.configuration.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spring.euler.common.exception.ApiErrorSchema;
+import com.spring.euler.common.exception.ApiExceptionSchema;
 import io.jsonwebtoken.MalformedJwtException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +93,7 @@ public class RequestFilter extends OncePerRequestFilter {
 
         try (PrintWriter writer = response.getWriter()) {
             response.setHeader("Content-Type", "application/json");
-            String errorDetails = OBJECT_MAPPER.writeValueAsString(new ApiErrorSchema(HttpStatus.UNAUTHORIZED, message));
+            String errorDetails = OBJECT_MAPPER.writeValueAsString(new ApiExceptionSchema(HttpStatus.UNAUTHORIZED, message));
             writer.print(errorDetails);
         } catch (IOException ex) { return response; }
         return response;

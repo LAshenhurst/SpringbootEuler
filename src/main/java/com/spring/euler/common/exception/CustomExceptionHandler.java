@@ -1,5 +1,6 @@
 package com.spring.euler.common.exception;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RestController
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
@@ -31,7 +33,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                                                                    WebRequest request) {
         String errorMessage = "No handler found for " + ex.getHttpMethod() + " " + ex.getRequestURL();
 
-        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.NOT_FOUND, errorMessage);
+        ApiExceptionSchema response = new ApiExceptionSchema(HttpStatus.NOT_FOUND, errorMessage);
         return new ResponseEntity<>(response, response.getStatus());
     }
 
@@ -47,7 +49,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
             errorMessage += "Supported methods are: " + String.join(", ", validMethods) + ".";
         }
 
-        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.METHOD_NOT_ALLOWED, errorMessage);
+        ApiExceptionSchema response = new ApiExceptionSchema(HttpStatus.METHOD_NOT_ALLOWED, errorMessage);
         return new ResponseEntity<>(response, response.getStatus());
     }
 
@@ -64,7 +66,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
             errorMessages.add(error.getObjectName() + ": " + error.getDefaultMessage());
         }
 
-        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.BAD_REQUEST, errorMessages);
+        ApiExceptionSchema response = new ApiExceptionSchema(HttpStatus.BAD_REQUEST, errorMessages);
         return new ResponseEntity<>(response, response.getStatus());
     }
 
@@ -74,7 +76,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
                                                                           HttpStatus status,
                                                                           WebRequest request) {
         String errorMessage = ex.getParameterName() + " parameter is missing";
-        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.BAD_REQUEST, errorMessage);
+        ApiExceptionSchema response = new ApiExceptionSchema(HttpStatus.BAD_REQUEST, errorMessage);
 
         return new ResponseEntity<>(response, response.getStatus());
     }
@@ -82,21 +84,21 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler({ MethodArgumentTypeMismatchException.class })
     public ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex) {
         String errorMessage = ex.getName() + " should be of type " + ex.getRequiredType().getName();
-        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.BAD_REQUEST, errorMessage);
+        ApiExceptionSchema response = new ApiExceptionSchema(HttpStatus.BAD_REQUEST, errorMessage);
 
         return new ResponseEntity<>(response, response.getStatus());
     }
 
 
-    @ExceptionHandler({ ApiError.class })
-    protected ResponseEntity<Object> handleAnyException(ApiError ex) {
-        ApiErrorSchema response = new ApiErrorSchema(ex.getStatus(), ex.getMessage());
+    @ExceptionHandler({ ApiException.class })
+    protected ResponseEntity<Object> handleAnyException(ApiException ex) {
+        ApiExceptionSchema response = new ApiExceptionSchema(ex.getStatus(), ex.getMessage());
         return new ResponseEntity<>(response, response.getStatus());
     }
 
     @ExceptionHandler({ Exception.class })
     public ResponseEntity<Object> handleAll(Exception ex) {
-        ApiErrorSchema response = new ApiErrorSchema(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
+        ApiExceptionSchema response = new ApiExceptionSchema(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
         return new ResponseEntity<>(response, response.getStatus());
     }
 }

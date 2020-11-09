@@ -1,11 +1,24 @@
 package com.spring.euler.helper;
 
-import lombok.extern.slf4j.Slf4j;
-
+import java.math.BigInteger;
 import java.util.*;
 
-@Slf4j
 public abstract class MathsHelper {
+    public static Integer digitSum(String number) {
+        return Arrays.stream(number.split(""))
+                .map(Integer::parseInt)
+                .reduce(0, Integer::sum);
+    }
+
+    public static boolean isLychrel(int n) {
+        BigInteger temp = BigInteger.valueOf(n);
+        for (int i = 0; i < 49; i++) {
+            temp = temp.add(new BigInteger(StringHelper.reverse(temp.toString())));
+            if (StringHelper.isPalindrome(temp.toString())) { return false; }
+        }
+        return true;
+    }
+
     public static Integer parseDigits(List<Integer> digits) {
         StringBuilder result = new StringBuilder();
         for (int digit: digits) { result.append(digit); }

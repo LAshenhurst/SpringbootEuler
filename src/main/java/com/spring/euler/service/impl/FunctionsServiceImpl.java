@@ -14,6 +14,8 @@ import java.util.concurrent.Callable;
 @Service
 @RequiredArgsConstructor
 public class FunctionsServiceImpl implements FunctionsService {
+    public Mono<TimedSolution> isLychrel(Integer n) { return Mono.just(TimerHelper.run(() -> MathsHelper.isLychrel(n))); }
+
     public Mono<TimedSolution> alphabeticalValue(String text) { return Mono.just(TimerHelper.run(() -> StringHelper.alphabeticalValue(text))); }
 
     public Mono<TimedSolution> isPrime(Integer n) { return Mono.just(TimerHelper.run(() -> MathsHelper.isPrime(n))); }

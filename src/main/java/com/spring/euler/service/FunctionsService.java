@@ -4,6 +4,8 @@ import com.spring.euler.domain.TimedSolution;
 import reactor.core.publisher.Mono;
 
 public interface FunctionsService {
+    Mono<TimedSolution> isLychrel(Integer n);
+
     Mono<TimedSolution> alphabeticalValue(String text);
 
     Mono<TimedSolution> isPrime(Integer n);
