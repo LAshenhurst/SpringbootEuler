@@ -23,22 +23,23 @@ public abstract class Problem60 {
                 .collect(Collectors.toList());
 
         primes.forEach(prime -> {
-            List<Integer> concats = concatPairs.stream()
+            List<Integer> concatPartners = concatPairs.stream()
                     .filter(pair -> pair.contains(prime))
                     .map(pair -> pair.get(0).equals(prime) ? pair.get(1) : pair.get(0))
                     .collect(Collectors.toList());
 
-            concatMap.put(prime, concats);
+            concatMap.put(prime, concatPartners);
         });
 
+        // Not very elegant, but it works, it makes sense, and it's reasonably quick
         for (int a: primes) {
             for (int b: concatMap.get(a)) {
                 for (int c: concatMap.get(b)) {
                     if (!concatMap.get(c).contains(a)) { continue; }
                     for (int d: concatMap.get(c)) {
-                        if (!concatMap.get(d).contains(a) || !concatMap.get(d).contains(b)) { continue; }
+                        if (!concatMap.get(d).containsAll(List.of(a, b))) { continue; }
                         for (int e: concatMap.get(d)) {
-                            if (!concatMap.get(e).contains(a) || !concatMap.get(e).contains(b) || !concatMap.get(e).contains(c)) { continue; }
+                            if (!concatMap.get(e).containsAll(List.of(a, b, c))) { continue; }
                             result = a + b + c + d + e;
                         }
                     }
