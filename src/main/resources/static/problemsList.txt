@@ -56,4 +56,5 @@
 56. Find the number with the largest digit sum from a ^ b where a, b < 100
 57. Find the number of fractions in the first 1000 expansions of the infinite fraction representing the square root of 2 that have a numerator with more digits than denominator
 58. Find the side length of the square spiral for which the ratio of primes along both diagonals first falls below 10%
-59. Use XOR encryption to decrypt a given message by finding the three character key
+59. Find the sum of the decrypted ASCII values in a given text file, using XOR encryption and finding the three character key
+60. Find the lowest sum for a set of five primes for which any two primes concatenate to produce another prime

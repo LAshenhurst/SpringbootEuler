@@ -61,7 +61,8 @@ public enum Solutions {
     FIFTY_SIX                            { @Override public String run() { return Problem56.run(); } },
     FIFTY_SEVEN                          { @Override public String run() { return Problem57.run(); } },
     FIFTY_EIGHT                          { @Override public String run() { return Problem58.run(); } },
-    FIFTY_NINE                           { @Override public String run() { return Problem59.run(); } };
+    FIFTY_NINE                           { @Override public String run() { return Problem59.run(); } },
+    SIXTY                                { @Override public String run() { return Problem60.run(); } };
 
     public abstract String run();
 }

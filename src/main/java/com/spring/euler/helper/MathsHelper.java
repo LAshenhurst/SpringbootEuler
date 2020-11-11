@@ -2,6 +2,7 @@ package com.spring.euler.helper;
 
 import java.math.BigInteger;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public abstract class MathsHelper {
     public static Integer digitSum(String number) {
@@ -158,5 +159,38 @@ public abstract class MathsHelper {
             }
             return digits == expected;
         }
+    }
+
+    public static List<List<Integer>> generateCombinatorics(final int n, final int r) {
+        List<List<Integer>> combinations = new ArrayList<>();
+        int[] res = new int[r];
+        for (int i = 0; i < res.length; i++) { res[i] = i + 1; }
+
+        boolean done = false;
+        while (!done) {
+            combinations.add(Arrays.stream(res).boxed().collect(Collectors.toList()));
+            done = nextCombination(res, n, r);
+        }
+
+        return combinations;
+    }
+
+    private static boolean nextCombination(final int[] num, final int n, final int r) {
+        int target = r - 1;
+        num[target]++;
+        if (num[target] > ((n - (r - target)) + 1)) {
+            while (num[target] > ((n - (r - target)))) {
+                target--;
+                if (target < 0) { break; }
+            }
+
+            if (target < 0) { return true; }
+            num[target]++;
+
+            for (int i = target + 1; i < num.length; i++) {
+                num[i] = num[i - 1] + 1;
+            }
+        }
+        return false;
     }
 }
