@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class ListHelper {
+public final class ListHelper {
     public static <T> List<List<T>> permute(List<T> original) {
         if (original.isEmpty()) {
             List<List<T>> result = new ArrayList<>();

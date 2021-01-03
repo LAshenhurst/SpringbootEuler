@@ -5,7 +5,7 @@ import com.spring.euler.helper.MathsHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Problem23 {
+public final class Problem23 {
     private static final int LIMIT = 28123;
 
     public static String run() {

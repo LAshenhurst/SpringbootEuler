@@ -1,6 +1,6 @@
 package com.spring.euler.configuration.security;
 
-import com.spring.euler.domain.EulerUserDetails;
+import com.spring.euler.domain.security.EulerUserDetails;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

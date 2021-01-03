@@ -4,7 +4,7 @@ import com.spring.euler.helper.MathsHelper;
 
 import java.util.List;
 
-public abstract class Problem50 {
+public final class Problem50 {
     public static String run() {
         List<Integer> primes = MathsHelper.sieveOfEratosthenes(1000000);
         int result = 953; int resultTerms = 21;

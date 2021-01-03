@@ -5,7 +5,7 @@ import com.spring.euler.helper.MathsHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Problem32 {
+public final class Problem32 {
     public static String run() {
         List<Integer> pandigitals = new ArrayList<>();
         for (int i = 0; i <= 10000; i++) {

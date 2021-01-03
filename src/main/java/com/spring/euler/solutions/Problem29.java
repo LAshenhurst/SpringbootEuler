@@ -3,7 +3,7 @@ package com.spring.euler.solutions;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Problem29 {
+public final class Problem29 {
     public static String run() {
         List<Double> terms = new ArrayList<>();
         for (int a = 2; a <= 100; a++) {

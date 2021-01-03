@@ -6,7 +6,7 @@ import java.io.File;
 import java.math.BigInteger;
 import java.util.List;
 
-public abstract class Problem13 {
+public final class Problem13 {
     public static String run() {
         File file = FilesHelper.getResourceFile("static/problem13.txt");
         List<String> numbers = FilesHelper.readAllLines(file);

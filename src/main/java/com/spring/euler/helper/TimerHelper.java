@@ -8,7 +8,7 @@ import org.springframework.util.StopWatch;
 
 import java.util.concurrent.*;
 
-public abstract class TimerHelper {
+public final class TimerHelper {
     private static final ExecutorService EXECUTOR = Executors.newCachedThreadPool();
 
     public static TimedSolution run(Callable<Object> method) { return processMethod(EXECUTOR.submit(method), true); }

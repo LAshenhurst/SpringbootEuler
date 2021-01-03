@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import com.spring.euler.helper.StringHelper;
 
-public abstract class Problem4 {
+public final class Problem4 {
     public static String run() {
         int result = -1;
         for (int i = 100; i < 1000; i++) {

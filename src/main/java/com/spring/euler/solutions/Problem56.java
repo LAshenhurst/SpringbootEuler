@@ -4,7 +4,7 @@ import com.spring.euler.helper.MathsHelper;
 
 import java.math.BigInteger;
 
-public abstract class Problem56 {
+public final class Problem56 {
     public static String run() {
         int result = 0;
         for (int i = 0; i < 100; i++) {

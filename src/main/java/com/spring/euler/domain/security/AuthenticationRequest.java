@@ -1,4 +1,4 @@
-package com.spring.euler.domain;
+package com.spring.euler.domain.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,10 @@ import javax.validation.constraints.NotNull;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthenticationResponse {
+public class AuthenticationRequest {
     @NotNull
-    private String token;
+    private String username;
+
+    @NotNull
+    private String password;
 }

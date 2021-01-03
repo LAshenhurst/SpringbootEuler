@@ -5,7 +5,7 @@ import com.spring.euler.helper.MathsHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Problem46 {
+public final class Problem46 {
     public static String run() {
         List<Integer> possiblePrimes = new ArrayList<>();
         for (int i = 9; ; i += 2) {

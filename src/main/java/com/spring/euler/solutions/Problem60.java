@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public abstract class Problem60 {
+public final class Problem60 {
     public static String run() {
         int result = -1;
         List<Integer> primes = MathsHelper.sieveOfEratosthenes(10000);

@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class StringHelper {
+public final class StringHelper {
     public static boolean isPalindrome(String val) {
         return new StringBuilder(val).reverse().toString().equals(val);
     }

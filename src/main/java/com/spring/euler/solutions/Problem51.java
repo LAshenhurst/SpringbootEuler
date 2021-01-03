@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class Problem51 {
+public final class Problem51 {
     public static String run() {
         final List<Integer> primes = MathsHelper.sieveOfEratosthenes(1000000);
         List<Integer> digits;

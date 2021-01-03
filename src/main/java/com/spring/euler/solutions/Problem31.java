@@ -1,6 +1,6 @@
 package com.spring.euler.solutions;
 
-public abstract class Problem31 {
+public final class Problem31 {
     public static String run() {
         int target = 200;
         int[] coins = { 1, 2, 5, 10, 20, 50, 100, 200 };

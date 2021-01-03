@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import java.util.Arrays;
 
-public abstract class Problem30 {
+public final class Problem30 {
     public static String run() {
         int result = 0;
         for (int i = 2; i < 1000000; i++) {

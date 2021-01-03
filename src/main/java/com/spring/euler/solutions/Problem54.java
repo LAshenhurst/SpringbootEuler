@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public abstract class Problem54 {
+public final class Problem54 {
     private static final HashMap<String, Integer> CARD_SCORES = fillCardScores();
     private static HashMap<String, Integer> HAND_SCORES;
     private static final List<String> CARD_VALUE_ORDER = List.of("2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A");
@@ -20,14 +20,10 @@ public abstract class Problem54 {
                 .filter(line -> {
                     String playerOneHand = line.substring(0, 14);
                     String playerTwoHand = line.substring(14);
-                    return compareHands(playerOneHand, playerTwoHand);
+                    return handScore(playerOneHand) > handScore(playerTwoHand);
                 }).count();
 
         return String.valueOf(result);
-    }
-
-    private static Boolean compareHands(String firstHand, String secondHand) {
-        return handScore(firstHand) > handScore(secondHand);
     }
 
     private static Integer handScore(String hand) {

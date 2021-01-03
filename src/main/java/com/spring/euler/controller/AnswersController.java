@@ -23,10 +23,6 @@ public class AnswersController {
         return answersService.getAnswer(index);
     }
 
-    @GetMapping("/test")
-    @ApiOperation(value = "Runs a specific method for testing purposes.")
-    public Mono<Response> runTestMethod() { return answersService.testMethod(); }
-
     @GetMapping
     @ApiOperation(value = "Returns a range of answers, or all answers if no min and max are provided. Some methods take several seconds.")
     public Mono<Response> getMultipleAnswers(@Valid @RequestParam(required = false) Integer min,

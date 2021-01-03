@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import java.util.Arrays;
 
-public abstract class Problem34 {
+public final class Problem34 {
     public static String run() {
         int[] factorials = { 1, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880 };
         int result = 0;

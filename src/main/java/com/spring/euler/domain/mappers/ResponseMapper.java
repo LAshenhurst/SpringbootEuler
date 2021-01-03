@@ -1,13 +1,11 @@
 package com.spring.euler.domain.mappers;
 
 import com.spring.euler.domain.Response;
-import lombok.extern.slf4j.Slf4j;
 import org.mapstruct.Mapper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Slf4j
 @Mapper(componentModel = "spring")
 public abstract class ResponseMapper {
     private static final SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");

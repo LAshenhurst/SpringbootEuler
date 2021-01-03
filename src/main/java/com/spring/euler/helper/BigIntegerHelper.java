@@ -2,7 +2,7 @@ package com.spring.euler.helper;
 
 import java.math.BigInteger;
 
-public abstract class BigIntegerHelper {
+public final class BigIntegerHelper {
 
     public static BigInteger lowestCommonMultiple(BigInteger x, BigInteger y) {
         return x.divide(x.gcd(y)).multiply(y);

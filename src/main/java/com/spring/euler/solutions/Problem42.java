@@ -7,7 +7,7 @@ import com.spring.euler.helper.StringHelper;
 import java.io.File;
 import java.util.Arrays;
 
-public abstract class Problem42 {
+public final class Problem42 {
     public static String run() {
         File file = FilesHelper.getResourceFile("static/problem42.txt");
         long result =  FilesHelper.readAllLines(file)

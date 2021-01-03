@@ -4,7 +4,7 @@ import com.spring.euler.helper.StringHelper;
 
 import java.util.List;
 
-public abstract class Problem43 {
+public final class Problem43 {
     private final static List<Integer> primes = List.of(2, 3, 5, 7, 11, 13, 17);
 
     public static String run() {

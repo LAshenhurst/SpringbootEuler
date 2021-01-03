@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public abstract class Problem45 {
+public final class Problem45 {
     public static String run() {
         int hex;
         for (int i = 144; ; i++) {

@@ -1,9 +1,6 @@
 package com.spring.euler.solutions;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
-public abstract class Problem39 {
+public final class Problem39 {
     public static String run() {
         int result = 0;
         int maxSolutions = 0;

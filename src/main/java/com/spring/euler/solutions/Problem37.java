@@ -1,13 +1,11 @@
 package com.spring.euler.solutions;
 
 import com.spring.euler.helper.MathsHelper;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Set;
 import java.util.HashSet;
 
-@Slf4j
-public abstract class Problem37 {
+public final class Problem37 {
     public static String run() {
         int result = 0;
         int count = 0;

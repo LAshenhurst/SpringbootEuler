@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public abstract class Problem33 {
+public final class Problem33 {
     public static String run() {
         int resultNumerator = 1;
         int resultDenominator = 1;

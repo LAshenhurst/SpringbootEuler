@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public abstract class Problem26 {
+public final class Problem26 {
     public static String run() {
         int result = 0;
         int maxRecurring = 0;

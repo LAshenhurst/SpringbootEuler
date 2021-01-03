@@ -5,7 +5,7 @@ import com.spring.euler.helper.MathsHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Problem21 {
+public final class Problem21 {
     public static String run() {
         List<Integer> amicableNumbers = new ArrayList<>();
         for (int i = 1; i < 10000; i++) {

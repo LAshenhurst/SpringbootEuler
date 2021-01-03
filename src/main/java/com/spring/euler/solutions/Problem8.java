@@ -5,7 +5,7 @@ import com.spring.euler.helper.FilesHelper;
 import java.io.File;
 import java.util.List;
 
-public abstract class Problem8 {
+public final class Problem8 {
     public static String run() {
         File file = FilesHelper.getResourceFile("static/problem8.txt");
         String number = String.join("", FilesHelper.readAllLines(file));

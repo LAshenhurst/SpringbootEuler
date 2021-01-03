@@ -5,7 +5,7 @@ import com.spring.euler.helper.MathsHelper;
 import java.util.Collections;
 import java.util.List;
 
-public abstract class Problem52 {
+public final class Problem52 {
     public static String run() {
         List<Integer> digits;
         List<Integer> testDigits;

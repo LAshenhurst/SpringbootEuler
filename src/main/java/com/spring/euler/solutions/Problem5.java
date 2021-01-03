@@ -4,7 +4,7 @@ import com.spring.euler.helper.BigIntegerHelper;
 
 import java.math.BigInteger;
 
-public abstract class Problem5 {
+public final class Problem5 {
     public static String run() {
         BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= 20; i++) { result = BigIntegerHelper.lowestCommonMultiple(BigInteger.valueOf(i), result); }

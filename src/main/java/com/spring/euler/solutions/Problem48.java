@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import java.math.BigInteger;
 
-public abstract class Problem48 {
+public final class Problem48 {
     public static String run() {
         BigInteger modulus = BigInteger.TEN.pow(10);
         BigInteger sum = BigInteger.ZERO;

@@ -6,7 +6,7 @@ import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public abstract class Problem59 {
+public final class Problem59 {
     private static final File FILE = FilesHelper.getResourceFile("static/Problem59.txt");
     private static final List<Integer> VALUES = FilesHelper.readAllLines(FILE).stream()
             .flatMap(line -> Arrays.stream(line.split(",")))

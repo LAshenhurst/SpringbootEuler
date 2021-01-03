@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class Problem18 {
+public final class Problem18 {
     public static String run() {
         File file = FilesHelper.getResourceFile("static/problem18.txt");
         List<List<Integer>> numbers = FilesHelper.readAllLines(file)

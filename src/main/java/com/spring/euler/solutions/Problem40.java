@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import java.util.List;
 
-public abstract class Problem40 {
+public final class Problem40 {
     public static String run() {
         List<Integer> indices = List.of(1, 10, 100, 1000, 10000, 100000, 1000000);
         StringBuilder decimal = new StringBuilder();

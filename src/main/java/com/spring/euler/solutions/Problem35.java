@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Slf4j
-public abstract class Problem35 {
+public final class Problem35 {
     public static String run() {
         List<List<Integer>> rotations = new ArrayList<>(List.of(List.of(2), List.of(3), List.of(5)));
         for (int i = 7; i <= 1000000; i += 2) {

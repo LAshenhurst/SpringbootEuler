@@ -1,6 +1,6 @@
 package com.spring.euler.solutions;
 
-public abstract class Problem2 {
+public final class Problem2 {
     public static String run() {
         int firstFib = 1;
         int secondFib = 2;

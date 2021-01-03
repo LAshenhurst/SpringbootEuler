@@ -4,7 +4,7 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public abstract class MathsHelper {
+public final class MathsHelper {
     public static Integer digitSum(String number) {
         return Arrays.stream(number.split(""))
                 .map(Integer::parseInt)
@@ -86,6 +86,18 @@ public abstract class MathsHelper {
     public static Boolean isHexagonal(int h) {
         double root = Math.sqrt((8.0 * h) + 1);
         return isInteger((root + 1) / 4.0);
+    }
+
+    public static Integer heptagonalNumber(int n) { return (n * ((5 * n) - 3)) / 2;}
+    public static Boolean isHeptagonal(int h) {
+        double root = Math.sqrt((40.0 * h) + 9);
+        return isInteger((root + 3) / 10.0);
+    }
+
+    public static Integer octagonalNumber(int n) { return n * ((3 * n) - 2);}
+    public static Boolean isOctagonal(int o) {
+        double root = Math.sqrt((12.0 * o) + 4);
+        return isInteger((root + 2) / 6.0);
     }
 
     public static List<Integer> findDivisors(int n) {

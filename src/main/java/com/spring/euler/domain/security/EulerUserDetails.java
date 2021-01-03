@@ -1,4 +1,4 @@
-package com.spring.euler.domain;
+package com.spring.euler.domain.security;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

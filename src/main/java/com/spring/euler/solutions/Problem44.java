@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public abstract class Problem44 {
+public final class Problem44 {
     public static String run() {
         int k; int j;
         int result = -1;

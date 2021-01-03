@@ -4,7 +4,7 @@ import com.spring.euler.helper.BigIntegerHelper;
 
 import java.math.BigInteger;
 
-public abstract class Problem53 {
+public final class Problem53 {
     public static String run() {
         int count = 0;
         for (int i = 0; i < 101; i++) {

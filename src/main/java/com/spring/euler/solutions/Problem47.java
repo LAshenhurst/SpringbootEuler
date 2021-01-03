@@ -5,7 +5,7 @@ import com.spring.euler.helper.MathsHelper;
 import java.util.HashSet;
 import java.util.stream.Stream;
 
-public abstract class Problem47 {
+public final class Problem47 {
     public static String run() {
         for (int i = 644; ; i++) {
             boolean criteriaMatch = Stream.of(i, i + 1, i + 2, i + 3)

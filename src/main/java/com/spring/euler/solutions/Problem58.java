@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import com.spring.euler.helper.MathsHelper;
 
-public abstract class Problem58 {
+public final class Problem58 {
     public static String run() {
         int primes = 0;
         for (int n = 1; ; n += 2) {

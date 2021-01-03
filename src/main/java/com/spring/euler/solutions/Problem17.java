@@ -1,6 +1,6 @@
 package com.spring.euler.solutions;
 
-public abstract class Problem17 {
+public final class Problem17 {
     private final static String[] ONES = {
             "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
             "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"

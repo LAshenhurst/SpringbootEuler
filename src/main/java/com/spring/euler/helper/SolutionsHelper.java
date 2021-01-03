@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.stream.Collectors;
 
-public abstract class SolutionsHelper {
+public final class SolutionsHelper {
     private static final List<Solutions> solutions = List.of(Solutions.values());
 
     public static TimedSolution getSolution(Integer index) {

@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import java.math.BigInteger;
 
-public abstract class Problem57 {
+public final class Problem57 {
     public static String run() {
         BigInteger[] fractions = new BigInteger[2];
         fractions[0] = BigInteger.ZERO;

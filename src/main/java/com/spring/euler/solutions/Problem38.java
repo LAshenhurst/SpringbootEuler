@@ -1,13 +1,11 @@
 package com.spring.euler.solutions;
 
 import com.spring.euler.helper.MathsHelper;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-@Slf4j
-public abstract class Problem38 {
+public final class Problem38 {
     public static String run() {
         int result = 0;
         for (int i = 9999; i > 1; i--) {

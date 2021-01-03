@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
-public abstract class FilesHelper {
+public final class FilesHelper {
     public static File getResourceFile(String path) {
         String filePath = ClassLoader.getSystemResource(path).getFile();
         return getFile(filePath);

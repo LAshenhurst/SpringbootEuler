@@ -2,7 +2,7 @@ package com.spring.euler.solutions;
 
 import java.math.BigInteger;
 
-public abstract class Problem25 {
+public final class Problem25 {
     public static String run() {
         BigInteger x = BigInteger.ONE;
         BigInteger y = BigInteger.ONE;

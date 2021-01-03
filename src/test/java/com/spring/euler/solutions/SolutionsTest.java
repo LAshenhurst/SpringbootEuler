@@ -1,10 +1,14 @@
 package com.spring.euler.solutions;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 public class SolutionsTest {
+    @Test
+    public void testMethod() { }
 
     @Test public void testProblem01() { assertEquals("233168"                  , Problem1.run()); }
     @Test public void testProblem02() { assertEquals("4613732"                 , Problem2.run()); }
@@ -66,4 +70,5 @@ public class SolutionsTest {
     @Test public void testProblem58() { assertEquals("26241"                   , Problem58.run()); }
     @Test public void testProblem59() { assertEquals("129448"                  , Problem59.run()); }
     @Test public void testProblem60() { assertEquals("26033"                   , Problem60.run()); }
+    @Test public void testProblem61() { assertEquals("28684"                   , Problem61.run()); }
 }
