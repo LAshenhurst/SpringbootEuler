@@ -71,4 +71,6 @@ public class SolutionsTest {
     @Test public void testProblem59() { assertEquals("129448"                  , Problem59.run()); }
     @Test public void testProblem60() { assertEquals("26033"                   , Problem60.run()); }
     @Test public void testProblem61() { assertEquals("28684"                   , Problem61.run()); }
+    @Test public void testProblem62() { assertEquals("127035954683"            , Problem62.run()); }
+    @Test public void testProblem63() { assertEquals("49"                      , Problem63.run()); }
 }

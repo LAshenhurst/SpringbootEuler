@@ -205,4 +205,8 @@ public final class MathsHelper {
         }
         return false;
     }
+
+    public static Long root(Integer base, Double exponent) {
+        return Math.round(Math.pow(base, exponent));
+    }
 }

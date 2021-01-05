@@ -6,8 +6,7 @@ import org.mapstruct.Mapper;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Mapper(componentModel = "spring")
-public abstract class ResponseMapper {
+public final class ResponseMapper {
     private static final SimpleDateFormat DATETIME_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     private static String generateEuler(String val) { return val != null ? "https://projecteuler.net/problem=" + val : null; }

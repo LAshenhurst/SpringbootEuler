@@ -57,11 +57,4 @@ public class AnswersServiceImpl implements AnswersService {
                 .map(answers -> ResponseMapper.toResponse(task, answers, null, false, null))
                 .doOnSubscribe(sub -> log.info(task));
     }
-
-    public Mono<Response> testMethod() {
-        return Mono.just(TimerHelper.runUntilComplete(Problem52::run))
-                .map(timedSolution ->
-                        ResponseMapper.toResponse("Test Method", timedSolution.getAnswer(), null, false, timedSolution.getComputeTime())
-                );
-    }
 }
